@@ -25,7 +25,6 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
