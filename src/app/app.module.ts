@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { enterComponent } from './enter/enter.component';
@@ -24,7 +24,8 @@ import { CreateProfileComponent } from './create-profile/create-profile.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
