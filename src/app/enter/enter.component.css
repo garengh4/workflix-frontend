@@ -40,8 +40,10 @@ html,body{
 
 /* 1.2.1 Button */
 .login button{
-    border-radius: 20px;
-    width: 50vw;
-    height: auto;
+    border-radius: 50px;
+}
 
+.login img{
+    width: 50vw;
+    height: 25vh;
 }
