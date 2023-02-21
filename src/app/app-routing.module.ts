@@ -1,33 +1,25 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { CreateAccountComponent } from "./create-account/create-account.component";
-import { enterComponent } from "./enter/enter.component";
-import { HomeComponent } from "./home/home.component";
-import { LoginComponent } from "./login/login.component";
-import { ProfileComponent } from "./profile/profile.component";
 
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { CreateProfileComponent } from './create-profile/create-profile.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { EnterComponent } from './enter/enter.component';
 
 const routes: Routes = [
-  { path: '', redirectTo:'enter', pathMatch:'full' },
-  { path: 'enter', component: enterComponent },
-  { path: 'enter/login', component:LoginComponent},
-  { path: 'profile', component:ProfileComponent},
-  { path: 'profile/home', component:HomeComponent},
-  { path: 'create-account', component:CreateAccountComponent},
-
-
-
-
-]
+  // { path: 'heroes', component: HeroesComponent }
+  { path: 'create-account', component:  CreateAccountComponent},
+  { path: 'create-profile', component:  CreateProfileComponent},
+  { path: 'home', component:  HomeComponent },
+  { path: 'login', component:  LoginComponent},
+  { path: 'profile', component:  ProfileComponent},
+  { path: 'enter', component:  EnterComponent},
+];
 
 @NgModule({
-    declarations:[],
-    imports:[
-        RouterModule.forRoot(routes)
-      ],
-      exports:[
-        RouterModule
-      ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule {}
+export class AppRoutingModule { }
