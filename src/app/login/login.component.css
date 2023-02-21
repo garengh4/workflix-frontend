@@ -15,7 +15,9 @@ html,body{
     margin-top:50px;
     margin-bottom:50px;
     text-align: center;
-
+    padding-left: 95px;
+    padding-right: 95px;
+    padding-top: 100px;
 }
 
 /* 1.1 Logo */
