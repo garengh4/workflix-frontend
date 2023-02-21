@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './enter.component.html',
   styleUrls: ['./enter.component.css']
 })
-export class enterComponent {
+export class EnterComponent {
   public profileLink = "/profile"
 
 }

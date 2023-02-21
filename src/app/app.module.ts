@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { enterComponent } from './enter/enter.component';
+import { EnterComponent } from './enter/enter.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -11,11 +11,13 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    enterComponent,
+    EnterComponent,
     LoginComponent,
     HomeComponent,
     ProfileComponent,
@@ -24,9 +26,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MatExpansionModule
+    HttpClientModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
