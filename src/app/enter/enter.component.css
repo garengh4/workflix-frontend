@@ -16,15 +16,32 @@ html,body{
     margin:0px;
 }
 
+/* 1. Container */
 .container{
     box-sizing: border-box;
 }
 
+/* 1.1. Title */
 .title{
     font-size: 18vw;
     font-weight: bold;
     text-align: center;
     color: #D7334C;
     padding-top: 20vh;
+
+}
+
+/* 1.2. Login */
+.login{
+    text-align: center;
+    padding-top: 10vh;
+    
+}
+
+/* 1.2.1 Button */
+.login button{
+    border-radius: 20px;
+    width: 50vw;
+    height: auto;
 
 }
