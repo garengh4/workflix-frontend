@@ -1,0 +1,30 @@
+html,body{
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    min-height: 100%;
+    min-width: 100%;
+      
+    /* Set up proportionate scaling */
+    width: auto;
+    height: auto;
+      
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    margin:0px;
+}
+
+.container{
+    box-sizing: border-box;
+}
+
+.title{
+    font-size: 18vw;
+    font-weight: bold;
+    text-align: center;
+    color: #D7334C;
+    padding-top: 20vh;
+
+}
