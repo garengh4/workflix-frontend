@@ -1,0 +1,10 @@
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: -2% 0 -2% -2%;
+}
