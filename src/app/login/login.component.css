@@ -8,9 +8,11 @@ html,body{
 /* 1. Container */
 .container{
     background-color: #FFE1A8;
-    /* display:flex;
+    display:flex;
     flex-direction: column;
-    flex-wrap: wrap; */
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
     height: 100vh;
     margin-top:50px;
     margin-bottom:50px;
