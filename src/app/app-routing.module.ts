@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateAccountComponent } from './create-account/create-account.component';
@@ -15,9 +16,6 @@ const routes: Routes = [
   { path: 'login', component:  LoginComponent},
   { path: 'profile', component:  ProfileComponent},
   { path: 'enter', component:  EnterComponent},
-
-    
-
 ];
 
 @NgModule({
