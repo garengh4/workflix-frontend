@@ -1,38 +1,14 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Workflix CreateAccount</title>
-    <meta name="viewport" content="width=device-width, initial scale=1">
-    <link rel="stylesheet" type="text/css" href="create-account.component.css">
-</head>
-</html>
-
-<body>
-    <form>
-        <div class="container">
-            <div class="logo">
-                <p>W</p>
-
-            </div>
-            <div class="welcomeMessage">
-                <p>Create your account</p>
-
-            </div>
-            <div class="input-form">
-                <!-- <label for="email">Email</label> -->
-                <input type="text" name="email" id="email" placeholder="Email">
-                 <!-- size="30px" maxlength="100"> -->
-                <input type="password" name="password" id="password" placeholder="Password">
-                 <!-- size="30px" maxlength="50"> -->
-            </div>
-
-            <div class="signUp">
-                <button type="submit">signUp</button>
-            </div>
-
-        </div>
-    </form>
-</body>
-
+<div class="container">
+    <div class="display">
+        <img src="../../assets/Images/logo.svg" alt="W">
+    </div>
+    <div class="console">
+        <h2>Create your account</h2>
+        <input type="text" placeholder="Email">
+        <input type="text" placeholder="Confirm email">
+        <input type="text" placeholder="Password">
+        <input type="text" placeholder="Confirm password">
+        <button routerLink="/login" type="submit">Sign up</button>
+    </div>
+</div>
