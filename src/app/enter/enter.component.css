@@ -9,16 +9,17 @@ html,body{
     height: auto;
       
     /* Set up positioning */
-    position: fixed;
     top: 0;
     left: 0;
     background-size: cover;
     margin:0px;
+    padding: 0px;
 }
 
 /* 1. Container */
 .container{
     box-sizing: border-box;
+    margin:0;
 }
 
 /* 1.1. Title */
@@ -27,7 +28,9 @@ html,body{
     font-weight: bold;
     text-align: center;
     color: #D7334C;
+    margin:0;
     padding-top: 20vh;
+    padding-bottom: 20vh;
 
 }
 
@@ -35,15 +38,32 @@ html,body{
 .login{
     text-align: center;
     padding-top: 10vh;
+    padding-bottom: 20vh;
     
 }
 
 /* 1.2.1 Button */
 .login button{
-    border-radius: 50px;
+    border-radius: 10%;
+    width: 45vw;
+    height: auto;
 }
 
 .login img{
-    width: 50vw;
-    height: 25vh;
+    border-radius: 10%;
+    width: 45vw;
+    height: auto;
+}
+
+.grow{
+    transition:add 0.5s ease-in-out
+}
+
+.grow:hover {
+    -webkit-transform: scale(1.25);
+    -moz-transform: scale(1.25);
+    -o-transform: scale(1.25);
+    -ms-transform: scale(1.25);
+    transform: scale(1.25);
+
 }
