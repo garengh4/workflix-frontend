@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html>
+<div class="container">
+    <div class="display">
+        <img src="../../assets/Images/logo.svg" alt="W">
+    </div>
+    <div class="console">
+        <h2>Login to your account</h2>
+        <input type="text" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <button type="submit">Login</button>
+    </div>
 
-<head>
-    <meta charset="utf-8">
-    <title>Workflix Login</title>
-    <meta name="viewport" content="width=device-width, initial scale=1">
-    <link rel="stylesheet" type="text/css" href="login.component.css">
-</head>
-</html>
+    <div class="signUp">
+        <p>Don't have an account?<a routerLink="/create-account">Sign up</a></p>
+    </div>
 
-<body>
-    <form>
-        <div class="container">
-            <div class="logo">
-                <p>W</p>
-
-            </div>
-            <div class="welcomeMessage">
-                <p>Login to your account</p>
-
-            </div>
-            <div class="input-form">
-                <!-- <label for="email">Email</label> -->
-                <input type="text" name="email" id="email" placeholder="Email">
-                 <!-- size="30px" maxlength="100"> -->
-                <input type="password" name="password" id="password" placeholder="Password">
-                 <!-- size="30px" maxlength="50"> -->
-            </div>
-
-            <div class="login">
-                <button type="submit">Login</button>
-            </div>
-
-            <div class="signUp">
-                <p>Don't have an account?<a href="#">Sign up</a></p>
-
-            </div>
-
-        </div>
-    </form>
-</body>
+</div>

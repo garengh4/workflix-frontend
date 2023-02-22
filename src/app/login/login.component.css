@@ -1,72 +1,40 @@
-html,body{
-    background-image: url(https://images.unsplash.com/photo-1611764553921-437fb44f747a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MXx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60);
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin:0px;
-}
-
 /* 1. Container */
-.container{
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30em;
+    height: 50em;
+    overflow: hidden;
+    position: absolute;
     background-color: #FFE1A8;
-    /* display:flex;
     flex-direction: column;
-    flex-wrap: wrap; */
-    height: 100vh;
-    margin-top:50px;
-    margin-bottom:50px;
-    text-align: center;
-    padding-left: 95px;
-    padding-right: 95px;
-    padding-top: 100px;
+    margin-top: 5em;
 }
 
-/* 1.1 Logo */
-.logo{
-    color: #99582A;
-    padding:1px;
-    font-size: 50px;
-    font-weight: bold;
-
+.display {
+    width: 16em;
 }
 
-/* 1.2 Welcome Message */
-.welcomeMessage{
-    color: #99582A;
-    font-size: 20px;
-    font-weight: bold;
+.console {
+    width: 15em;
 }
 
-/* 1.3 Input form */
-.input-form{
-    margin: 0 auto;
-    width: 200px;
-    padding-bottom:5px;
-
-}
-
-input, textarea{
-    background-color: #4D4D4D ;
+input,
+textarea {
+    background-color: #4D4D4D;
     color: #A1A1A1;
     border-radius: 5px;
     padding: 3px;
     margin: 8px;
 }
 
-/* 1.4 Login Button */
-.login{
-    margin: 0 auto;
-    width:200px;
-
-}
-
-.login button{
+button {
     background-color: #99582A;
     color: white;
     border-radius: 8px;
-    margin: 0 auto;
-}
-
-/* 1.5 Create an account  */
-.signUp{
-    color: #99582A;
+    margin: 1em auto;
+    width: 8em;
+    height: 2em;
+    display: block;
 }
