@@ -1,10 +1,21 @@
-.header-design {
-    color: #99582A;
-    padding: 20% 0 15% 0;
+.body-class {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    overflow: hidden;
+    position: absolute;
+    flex-direction: column;
     text-align: center;
-    font-size: 150%;
+}
+
+.header-design {
     background-color: #FFE1A8;
-    margin-top: 5em;
+    width: 100%;
+    padding: 20px 0 30px 0;
+    text-align: center;
+    font-size: 25px;
+    border: 10px solid #FFE1A8;
 }
 
 .profile-button {
@@ -19,12 +30,13 @@
 
 .button-and-name {
     display: inline;
+    padding: 0;
 }
 
 .profile-image {
-    width: 30vw;
+    width: 120px;
     height: width;
-    border-radius: 8vw;
+    border-radius: 30px;
 }
 
 p {
@@ -34,4 +46,6 @@ p {
 }
 .console{
     background-color: #FFE1A8;
+    border-top: 5px solid #FFE1A8;
+    padding: 0 20px;
 }
