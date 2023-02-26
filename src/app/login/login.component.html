@@ -1,16 +1,21 @@
 <div class="container">
-    <div class="display">
-        <img src="../../assets/Images/logo.svg" alt="W">
-    </div>
-    <div class="console">
-        <h2>Login to your account</h2>
-        <input type="text" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <button routerLink="/profile" type="submit">Login</button>
-    </div>
 
-    <div class="signUp">
-        <p>Don't have an account?<a routerLink="/create-account">Sign up</a></p>
-    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+        <div class="display">
+            <img src="../../assets/Images/logo.svg" alt="W">
+        </div>
+        <div class="console">
+            <h2>Login to your account</h2>
+            <input formControlName="emailId" type="text" placeholder="Email">
+            <input formControlName="password" type="password" placeholder="Password">
+            <button routerLink="/profile" type="submit">Login</button>
+        </div>
 
+        <div class="signUp">
+            <p>Don't have an account?<a routerLink="/create-account">Sign up</a></p>
+            <p>success: {{successMsg}}</p>
+            <p>error: {{errMsg}}</p>
+        </div>
+    </form>
+    
 </div>
