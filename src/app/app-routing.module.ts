@@ -10,6 +10,7 @@ import { EnterComponent } from './enter/enter.component';
 
 const routes: Routes = [
   // { path: 'heroes', component: HeroesComponent }
+  { path: '', redirectTo:'login', pathMatch:'full'},
   { path: 'create-account', component:  CreateAccountComponent},
   { path: 'create-profile', component:  CreateProfileComponent},
   { path: 'home', component:  HomeComponent },
