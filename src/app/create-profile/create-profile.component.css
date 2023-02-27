@@ -11,6 +11,11 @@
     margin-top: 5em;
 }
 
+.back-image {
+    width: 40px;
+    height: 40px;
+}
+
 .display {
     width: 16em;
     /* background-color: lightseagreen; */
@@ -29,7 +34,7 @@ textarea {
     padding: 3px;
     margin: 8px;
 }
-button {
+.add-button {
     background-color: #99582A;
     color: white;
     border-radius: 8px;
