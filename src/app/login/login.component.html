@@ -6,16 +6,18 @@
         </div>
         <div class="console">
             <h2>Login to your account</h2>
-            <input formControlName="emailId" type="text" placeholder="Email">
-            <input formControlName="password" type="password" placeholder="Password">
-            <button routerLink="/profile" type="submit">Login</button>
+            <div class="login-form">
+                <input formControlName="emailId" type="text" placeholder="Email">
+                <input formControlName="password" type="password" placeholder="Password">
+                <button routerLink="/profile" type="submit">Login</button>
+            </div>
         </div>
 
         <div class="signUp">
-            <p>Don't have an account?<a routerLink="/create-account">Sign up</a></p>
-            <p>success: {{successMsg}}</p>
-            <p>error: {{errMsg}}</p>
+            <p>Don't have an account? <a routerLink="/create-account">Sign up </a></p>
+            <p>{{successMsg}}</p>
+            <p>{{errMsg}}</p>
         </div>
     </form>
-    
+
 </div>
