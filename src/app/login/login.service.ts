@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, throwError } from "rxjs";
 import { Login } from "src/assets/entites/Login";
 import { environment } from "src/environments/environment";
 
@@ -14,9 +14,27 @@ export class LoginService {
     constructor(private http: HttpClient) { }
 
     public authenticateLogin(login: Login): Observable<Login> {
-        // TODO: must match backend API. Edit environment.ts
-        let url = environment.backendLoginAPI;
-        return this.http.post<Login>(url, login, { headers: this.headers });
+        let url = environment.backendLoginAPI+"/login-api/login";
+        return this.http.post<Login>(url, login, { headers: this.headers }).pipe(catchError(this.handleError));;
 
+    }
+    private handleError(err: HttpErrorResponse) {
+        console.log(err)
+        let errMsg:string='';
+        if (err.error instanceof Error) {   
+            errMsg=err.error.message;
+            console.log(errMsg)
+        }
+         else if(typeof err.error === 'string'){
+            errMsg = JSON.parse(err.error).errorMessage
+        }
+        else {
+           if(err.status==0){ 
+               errMsg="A connection to back end can not be established.";
+           }else{
+            errMsg = err.error.errorMessage;
+           }
+         }
+            return throwError(errMsg);
     }
 }

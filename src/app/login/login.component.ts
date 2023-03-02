@@ -37,9 +37,7 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
-        // TODO: most likely going to be bug here from routing. check.
-        sessionStorage.setItem('loginEntry', JSON.stringify(this.loginEntry))
-        this.router.navigate(['/home'])
+        this.router.navigate(['/profile'])
 
       }, error: msg => {
         this.errMsg = <any>msg;
