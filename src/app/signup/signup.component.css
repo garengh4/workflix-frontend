@@ -2,24 +2,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30em;
-    height: 50em;
+    width: 100%;
+    height: 70%;
     overflow: hidden;
     position: absolute;
     background-color: #FFE1A8;
     flex-direction: column;
-    margin-top: 5em;
+    margin-top: 8em;
 }
 
 .display {
-    width: 16em;
-    /* background-color: lightseagreen; */
+    width: 10em;
+    margin: auto;
 }
 
-.console {
-    width: 15em;
-    /* background-color: lightcoral; */
-}
 
 input,
 textarea {
@@ -37,4 +33,19 @@ button {
     width: 8em;
     height: 2em;
     display: block;
+}
+.signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+@media screen and (min-width: 1900px) {
+    .container {
+        width: 80%;
+        margin-left: 10em;
+    }
+    
 }

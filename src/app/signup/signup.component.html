@@ -1,0 +1,24 @@
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <div class="display">
+            <img src="../../assets/Images/workflix-logo.svg" alt="W">
+        </div>
+        <div class="signup-form">
+            <h2>Create your account</h2>
+            <input type="text" formControlName="emailId" placeholder="Email">
+            <input type="text" placeholder="Confirm email">
+            <input type="text" formControlName="password" placeholder="Password">
+            <input type="text" placeholder="Confirm password">
+            <button >Sign up</button>
+            <p>{{successMsg}}</p>
+            <p>{{errMsg}}</p>
+        </div>
+        <div>
+            <p>Already have an account? <a routerLink="/login">Login</a></p>
+            <p>{{successMsg}}</p>
+            <p>{{errMsg}}</p>
+        </div>
+    </form>
+
+</div>
+
