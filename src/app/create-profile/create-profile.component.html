@@ -1,18 +1,15 @@
-<div class="topmost-back-button">
-    <button routerLink="/profile" class="back-button">
-        <img class="back-image" src="../../assets/Images/back-button.png">
-    </button>
-</div>
 <div class="container">
-    <div class="display">
-        <img src="../../assets/Images/logo.svg" alt="W">
-    </div>
-    <div class="console">
-        <h2>Add your Profile</h2>
-        <input type="text" placeholder="First name">
-        <input type="text" placeholder="Last name">
-        <input type="text" placeholder="Email">
-        <input type="text" placeholder="Password">
-        <button class="add-button" routerLink="/profile" type="submit">Add</button>
-    </div>
+
+    <form [formGroup]="profileForm" (ngSubmit)="onCreateProfile()">
+        <div class="display">
+            <img src="../../assets/Images/workflix-logo.svg" alt="W">
+        </div>
+        <div class="add-profile-form">
+            <h2>Add New Profile</h2>
+            <input type="text" formControlName="emailId" placeholder="Email">
+            <input type="text" formControlName="firstName" placeholder="First name">
+            <button routerLink="/profile">Add</button>
+        </div>
+    </form>
+
 </div>
