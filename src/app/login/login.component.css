@@ -16,12 +16,6 @@
     width: 10em;
     margin: auto;
 }
-
-.console {
-    width: 15em;
-    /* background-color: lightcoral; */
-}
-
 input,
 textarea {
     background-color: #4D4D4D;
@@ -40,10 +34,12 @@ button {
     height: 2em;
     display: block;
 }
+
 p {
     margin-left: 1em;
 }
-.login-form{
+
+.login-form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,12 +47,10 @@ p {
     margin-bottom: 2em;
 }
 
-/* ipad-pro */
 @media screen and (min-width: 1900px) {
-    /* TODO */
     .container {
         width: 80%;
         margin-left: 10em;
     }
-    
+
 }

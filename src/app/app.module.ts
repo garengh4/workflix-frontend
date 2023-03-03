@@ -7,7 +7,7 @@ import { EnterComponent } from './enter/enter.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CreateAccountComponent } from './create-account/create-account.component';
+import { SignUpComponent } from './signup/signup.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -37,7 +37,7 @@ const modules = [
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    CreateAccountComponent,
+    SignUpComponent,
     CreateProfileComponent,
   ],
   imports: [
