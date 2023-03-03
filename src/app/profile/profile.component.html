@@ -1,38 +1,24 @@
-<body class="body-class">
-    <div class="topmost-back-button">
-        <button routerLink="/login" class="back-button">
-            <img class="back-image" src="../../assets/Images/back-button.png">
-        </button>
-    </div>
-    <div class="header-design">
+
+
+
+<div class="container">
+    <div class="display">
         <h1>Profiles</h1>
     </div>
     <div class="console">
-        <div class="button-and-name">
-            <button routerLink="/home" class="profile-button">
-                <img class="profile-image" src="../../assets/Images/user1.png">
-                <p>Anju</p>
-            </button>
-        </div>
-        <div class="button-and-name">
-            <button routerLink="/home" class="profile-button">
-                <img class="profile-image" src="../../assets/Images/user2.png">
-                <p>Lalit</p>
-            </button>
-        </div>
-        <div class="button-and-name">
-            <button routerLink="/home" class="profile-button">
-                <img class="profile-image"
-                    src="../../assets/Images/user3.png">
-                <p>Gareth</p>
-            </button>
-        </div>
-        <div class="button-and-name">
-            <button routerLink="/create-profile" class="profile-button">
-                <img class="profile-image"
-                    src="../../assets/Images/Plus.png">
-                <p>Add</p>
-          </button>
+        <div class="flex-repeat-container">
+            <div *ngFor="let num of [1,2,3]" class="profile-card">
+                <mat-card>
+                    <img mat-card-image src="../../assets/Images/user1.png">
+                    <mat-card-actions>
+                        <button routerLink="/home" mat-button>Profile:{{num}}</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
     </div>
-</body>
+    <div class="footer">
+        <p routerLink="/create-profile">+</p>
+    </div>
+    
+</div>

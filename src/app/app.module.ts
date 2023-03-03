@@ -9,10 +9,26 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { CreateProfileComponent } from './create-profile/create-profile.component';
-import {AngularMaterialModule} from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { AngularMaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule} from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
+const modules = [
+  MatNativeDateModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatToolbarModule
+];
 
 @NgModule({
   declarations: [
@@ -22,14 +38,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     HomeComponent,
     ProfileComponent,
     CreateAccountComponent,
-    CreateProfileComponent
+    CreateProfileComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularMaterialModule,
     HttpClientModule,
+    MatExpansionModule,
     AppRoutingModule,
-    ReactiveFormsModule 
+    modules
+  ],
+  exports: [
+    modules
   ],
   providers: [],
   bootstrap: [AppComponent]
