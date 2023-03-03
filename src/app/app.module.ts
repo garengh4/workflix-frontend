@@ -11,6 +11,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { CreateProfileComponent } from './create-profile/create-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AngularMaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -44,6 +45,7 @@ const modules = [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularMaterialModule,
     HttpClientModule,
     MatExpansionModule,
     AppRoutingModule,
