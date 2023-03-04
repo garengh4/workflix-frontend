@@ -34,14 +34,17 @@ export class LoginComponent implements OnInit {
     this.errMsg = '';
     this.successMsg = '';
     this.loginEntry = this.loginForm.value as Login;
-    this.loginService.authenticateLogin(this.loginEntry).subscribe({
-      next: msg => {
-        this.loginEntry = msg;
-        this.router.navigate(['/profile'])
 
-      }, error: msg => {
-        this.errMsg = <any>msg;
-      }
-    })
+    this.router.navigate(['/profile'])
+
+    // this.loginService.authenticateLogin(this.loginEntry).subscribe({
+    //   next: msg => {
+    //     this.loginEntry = msg;
+    //     this.router.navigate(['/profile'])
+
+    //   }, error: msg => {
+    //     this.errMsg = <any>msg;
+    //   }
+    // })
   }
 }
