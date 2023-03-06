@@ -3,30 +3,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30em;
-    height: 50em;
+    width: 100%;
+    height: 70%;
     overflow: hidden;
     position: absolute;
     background-color: #FFE1A8;
     flex-direction: column;
-    margin-top: 5em;
+    margin-top: 8em;
 }
 
 .display {
-    width: 16em;
+    width: 10em;
+    margin: auto;
 }
-
-.console {
-    width: 15em;
-}
-
 input,
 textarea {
     background-color: #4D4D4D;
     color: #A1A1A1;
     border-radius: 5px;
     padding: 3px;
-    margin: 8px;
+    margin: 0.5em;
 }
 
 button {
@@ -37,4 +33,24 @@ button {
     width: 8em;
     height: 2em;
     display: block;
+}
+
+p {
+    margin-left: 1em;
+}
+
+.login-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2em;
+}
+
+@media screen and (min-width: 1900px) {
+    .container {
+        width: 80%;
+        margin-left: 10em;
+    }
+
 }

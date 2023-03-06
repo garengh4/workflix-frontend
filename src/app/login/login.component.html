@@ -1,21 +1,19 @@
 <div class="container">
 
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <form  [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="display">
-            <img src="../../assets/Images/logo.svg" alt="W">
+            <img src="../../assets/Images/workflix-logo.svg" alt="W">
         </div>
-        <div class="console">
+        <div class="login-form">
             <h2>Login to your account</h2>
             <input formControlName="emailId" type="text" placeholder="Email">
             <input formControlName="password" type="password" placeholder="Password">
-            <button routerLink="/profile" type="submit">Login</button>
+            <button>Login</button>
         </div>
 
-        <div class="signUp">
-            <p>Don't have an account?<a routerLink="/create-account">Sign up</a></p>
-            <p>success: {{successMsg}}</p>
-            <p>error: {{errMsg}}</p>
+        <div>
+            <p>Don't have an account? <a routerLink="/signup">Sign up </a></p>
         </div>
     </form>
-    
+
 </div>
