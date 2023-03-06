@@ -25,7 +25,7 @@
                 <div *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
                     <div *ngIf="signupForm.controls?.['password'].errors?.['required']">Password is required.</div>
                     <div *ngIf="signupForm.controls?.['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Password is not strong enough.</div>
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Password must have atlease one Uppercase and one Special character</div>
                 </div>
 
             <!-- Confirm password Form validation -->
