@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
 import { SignUpService } from './signup.service';
@@ -23,9 +23,26 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   public createSignUpForm() {
     this.signupForm = this.fb.group({
-      emailId: [this.signupEntry.emailId, [Validators.required], null],
-      password: [this.signupEntry.password, [Validators.required], null],
+      emailId: [this.signupEntry.emailId, [Validators.required, Validators.email], null],
+      confirmEmail: [this.signupEntry.confirmEmail, [Validators.required, this.matchValues('emailId')]],
+      password: [this.signupEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
+      confirmPassword: [this.signupEntry.confirmPassword, [this.matchValues('password')]]
     });
+  }
+
+  passwordStrengthValidator(control: FormControl): { [key: string]: boolean } | null {
+    const hasSpecialCharacter = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(control.value);
+    const hasUpperCase = /[A-Z]/.test(control.value);
+    const passwordValid = hasSpecialCharacter && hasUpperCase;
+    return passwordValid ? null : { passwordStrength: true };
+  }
+
+  matchValues(matchTo: string) {
+    return (control: AbstractControl) => {
+      const value = control.value;
+
+      return value === control?.parent?.controls[matchTo].value ? null : { isMatching: true };
+    };
   }
 
   public onSignup() {
