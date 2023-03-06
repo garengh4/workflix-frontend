@@ -5,10 +5,36 @@
         </div>
         <div class="signup-form">
             <h2>Create your account</h2>
+
+            <!-- Email Form validation -->
             <input type="text" formControlName="emailId" placeholder="Email">
-            <input type="text" placeholder="Confirm email">
+                <div *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
+                    <div *ngIf="signupForm.get('emailId').errors?.['required']">Email is required</div>
+                    <div *ngIf="signupForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
+                </div>
+
+            <!-- Confirm email Form validation -->
+            <input type="text" formControlName="confirmPassword" placeholder="Confirm email">
+                <div *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+                    Emails do not match.
+                </div>
+                <div *ngIf="signupForm.get('confirmEmail').errors?.['required']">Required field</div>
+
+            <!-- Password Form validation -->
             <input type="text" formControlName="password" placeholder="Password">
-            <input type="text" placeholder="Confirm password">
+                <div *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Password is not strong enough.</div>
+                </div>
+
+            <!-- Confirm password Form validation -->
+            <input type="text" formControlName="confirmPassword" placeholder="Confirm password">
+                <div *ngIf="signupForm.get('confirmPassword').errors?.['isMatching'] && (signupForm.get('confirmPassword').dirty || signupForm.get('confirmPassword').touched)">
+                    Passwords do not match.
+                </div>
+                <div *ngIf="signupForm.controls?.['confirmPassword'].errors?.['required']">Required field</div>
+
             <button >Sign up</button>
             <p>{{successMsg}}</p>
             <p>{{errMsg}}</p>
@@ -21,4 +47,3 @@
     </form>
 
 </div>
-
