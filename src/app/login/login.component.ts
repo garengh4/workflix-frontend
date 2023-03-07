@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/assets/entites/Login';
 import { LoginService } from './login.service';
@@ -25,8 +25,14 @@ export class LoginComponent implements OnInit {
   public createLoginForm() {
     this.loginForm = this.fb.group({
       emailId: [this.loginEntry.emailId, [Validators.required], null],
-      password: [this.loginEntry.password, [Validators.required], null],
+      password: [this.loginEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
     });
+  }
+  passwordStrengthValidator(control: FormControl): { [key: string]: boolean } | null {
+    const hasSpecialCharacter = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(control.value);
+    const hasUpperCase = /[A-Z]/.test(control.value);
+    const passwordValid = hasSpecialCharacter && hasUpperCase;
+    return passwordValid ? null : { passwordStrength: true };
   }
 
   // ===============To Html=================================================================================

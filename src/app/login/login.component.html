@@ -6,9 +6,40 @@
         </div>
         <div class="login-form">
             <h2>Login to your account</h2>
-            <input formControlName="emailId" type="text" placeholder="Email">
-            <input formControlName="password" type="password" placeholder="Password">
-            <button>Login</button>
+
+            <div class="email-container">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput placeholder="pat@example.com" formControlName="emailId" required>
+                  <mat-error *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
+                    <div *ngIf="loginForm.get('emailId').errors?.['required']">Email is required</div>
+                    <div *ngIf="loginForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="middle-hello" *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
+                <p>Hello</p>
+            </div>
+
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput formControlName="password" required>
+                  <mat-error *ngIf="loginForm.controls?.['password'].invalid && (loginForm.controls?.['password'].dirty || loginForm.controls?.['password'].touched)">
+                    <div *ngIf="loginForm.controls?.['password'].errors?.['required']">Password is required.</div>
+                    <div *ngIf="loginForm.controls?.['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
+                    <div *ngIf="loginForm.controls?.['password'].errors?.['passwordStrength']">Password must have atlease one Uppercase and one Special character</div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="middle-hello" *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
+                <p>Hello</p>
+                <p>Hello</p>
+            </div>
+
+            <button [disabled]="!loginForm.valid">Login</button>
         </div>
 
         <div>
