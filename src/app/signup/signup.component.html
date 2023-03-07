@@ -6,36 +6,69 @@
         <div class="signup-form">
             <h2>Create your account</h2>
 
-            <!-- Email Form validation -->
-            <input type="text" formControlName="emailId" placeholder="Email">
-                <div *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
-                    <div *ngIf="signupForm.get('emailId').errors?.['required']">Email is required</div>
-                    <div *ngIf="signupForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
-                </div>
+            <div class="email-container">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter your email</mat-label>
+                  <input matInput placeholder="pat@example.com" formControlName="emailId" required>
+                  <mat-error *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
+                    <div class="error" *ngIf="signupForm.get('emailId').errors?.['required']">Email is required</div>
+                    <div class="error" *ngIf="signupForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
 
-            <!-- Confirm email Form validation -->
-            <input type="text" formControlName="confirmPassword" placeholder="Confirm email">
-                <div *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
-                    Emails do not match.
-                </div>
-                <div *ngIf="signupForm.get('confirmEmail').errors?.['required']">Required field</div>
+            <div class="middle-hello" *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
+                <p>Hello</p>
+            </div>
 
-            <!-- Password Form validation -->
-            <input type="text" formControlName="password" placeholder="Password">
-                <div *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Confirm email</mat-label>
+                  <input matInput placeholder="pat@example.com" formControlName="confirmEmail" required>
+                  <mat-error *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+                    <div *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+                        Emails do not match.
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="middle-hello" *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+                <p>Hello</p>
+            </div>
+
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Password</mat-label>
+                  <input type="password" matInput formControlName="password" required>
+                  <mat-error *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
                     <div *ngIf="signupForm.controls?.['password'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Password must have atlease one Uppercase and one Special character</div>
-                </div>
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['minlength']">Minimum 8 characters</div>
+                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Atlease one Uppercase and one Special character required</div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
 
-            <!-- Confirm password Form validation -->
-            <input type="text" formControlName="confirmPassword" placeholder="Confirm password">
-                <div *ngIf="signupForm.get('confirmPassword').errors?.['isMatching'] && (signupForm.get('confirmPassword').dirty || signupForm.get('confirmPassword').touched)">
+            <div class="middle-hello" *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
+                <p>Hello</p>
+                <p>Hello</p>
+            </div>
+
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Confirm password</mat-label>
+                  <input type="password" matInput formControlName="confirmPassword" required>
+                  <mat-error *ngIf="signupForm.get('confirmPassword').errors?.['isMatching'] && (signupForm.get('confirmPassword').dirty || signupForm.get('confirmPassword').touched)">
                     Passwords do not match.
-                </div>
-                <div *ngIf="signupForm.controls?.['confirmPassword'].errors?.['required']">Required field</div>
+                  </mat-error>
+                </mat-form-field>
+            </div>
 
-            <button >Sign up</button>
+            <div class="middle-hello" *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
+                <p>Hello</p>
+            </div>
+
+            <button [disabled]="!signupForm.valid">Sign up</button>
             <p>{{successMsg}}</p>
             <p>{{errMsg}}</p>
         </div>
