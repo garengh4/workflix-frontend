@@ -12,6 +12,7 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   successMsg: string;
   errMsg: string;
+  isLoggedIn: boolean;
 
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
@@ -37,7 +38,9 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
-        this.router.navigate(['/profile'])
+        localStorage.setItem('isLoggedIn',"true");
+        this.router.navigate(['/profile']);
+        
 
       }, error: msg => {
         this.errMsg = <any>msg;
