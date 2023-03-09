@@ -1,20 +1,39 @@
 .card-img-top {
-    width: 150px;
+    width: 2rem;
     height: auto;
-    padding: 10px;
+    padding: 2px;
+    background-color: #D9D9D9;
 }
 
-.container-fluid{
-    background-color: #FFE1A8;
-    margin-top:50px;
-    margin-bottom:50px;
+.card-title, .card-text {
+    word-wrap: normal;
+    font-size: 75%;
+}
 
+.card {
+    background-color: #D9D9D9;
+}
+
+/* .card-title {
+    font-size: 1rem;
+} */
+
+
+.container-fluid {
+    background-color: #FFE1A8;
+    margin-top: 5em;
+    padding-top: 50px;
+    height: 80%;
 }
 
 ::ng-deep .mat-expansion-panel-body {
     background-color: #FFE1A8;
 }
 
+::ng-deep .mat-expansion-panel-header {
+    background-color: #FFE1A8;
+}
 
-
-
+.mat-expansion-panel-header-title {
+    color: #99582A;
+}
