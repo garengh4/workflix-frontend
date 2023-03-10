@@ -12,7 +12,7 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   successMsg: string;
   errMsg: string;
-
+  
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
+        localStorage.setItem('emailId',<string>this.loginEntry.emailId);
         this.router.navigate(['/profile'])
 
       }, error: msg => {
