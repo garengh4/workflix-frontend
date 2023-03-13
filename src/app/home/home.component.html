@@ -1,80 +1,41 @@
-
-    <div class="container-fluid pt-5 pb-5">
-      <mat-accordion multi="true">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              My Vidoes
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <!--Will Do *ngFor once the backend is done-->
-          <div class="row justify-content-center">
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FileImagePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Video title</h5>
-                <p class="card-text">Video Description</p>
-              </div>
-            </div>
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FileImagePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Video title</h5>
-                <p class="card-text">Video Description</p>
-              </div>
-            </div>
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FileImagePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Video title</h5>
-                <p class="card-text">Video Description</p>
-              </div>
-            </div>
+<div class="container-fluid">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          My Vidoes
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row justify-content-center">
+        <div *ngFor="let num of [1,2,3,4,5,6]" class="card m-2 col-5 col-sm-3">
+          <div style="text-align: center;">
+            <img class="card-img-top" src="assets\Images\FileImagePlaceholder.png" alt="">
           </div>
-        </mat-expansion-panel>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              My Documents
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <!--Will Do *ngFor once the backend is done-->
-          <div class="row justify-content-center">
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FilePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Document title</h5>
-                <p class="card-text">Document Description</p>
-              </div>
-            </div>
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FilePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Document title</h5>
-                <p class="card-text">Document Description</p>
-              </div>
-            </div>
-            <div class="card m-2" style="width: 18rem;">
-              <div style="text-align: center;">
-                <img class="card-img-top" src="assets\Images\FilePlaceholder.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Document title</h5>
-                <p class="card-text">Document Description</p>
-              </div>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Video title</h5>
+            <p class="card-text text-wrap">Video Description</p>
           </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          My Documents
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row justify-content-center">
+        <div *ngFor="let num of [1,2,3,4,5,6]" class="card m-2 col-5 col-sm-3">
+          <div style="text-align: center;">
+            <img class="card-img-top" src="assets\Images\FilePlaceholder.png" alt="">
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Document title</h5>
+            <p class="card-text text-wrap">Document Description</p>
+          </div>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
 <button routerLink="/login">logout</button>

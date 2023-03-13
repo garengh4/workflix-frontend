@@ -12,7 +12,8 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
   successMsg: string;
   errMsg: string;
-  
+  isLoggedIn: boolean;
+
   constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
@@ -44,7 +45,8 @@ export class LoginComponent implements OnInit {
       next: msg => {
         this.loginEntry = msg;
         localStorage.setItem('emailId',<string>this.loginEntry.emailId);
-        this.router.navigate(['/profile'])
+        localStorage.setItem('isLoggedIn',"true");
+        this.router.navigate(['/profile']);
 
       }, error: msg => {
         this.errMsg = <any>msg;
