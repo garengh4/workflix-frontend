@@ -7,11 +7,11 @@
     </div>
     <div class="console">
         <div class="flex-repeat-container">
-            <div *ngFor="let num of [1,2,3]" class="profile-card">
+            <div *ngFor="let id of profiles" class="profile-card">
                 <mat-card>
                     <img mat-card-image src="../../assets/Images/user1.png">
                     <mat-card-actions>
-                        <button routerLink="/home" mat-button>Profile:{{num}}</button>
+                        <button routerLink="/home" mat-button>{{id.userProfileId}}</button>
                     </mat-card-actions>
                 </mat-card>
             </div>

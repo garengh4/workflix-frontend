@@ -44,9 +44,9 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
+        localStorage.setItem('emailId',<string>this.loginEntry.emailId);
         localStorage.setItem('isLoggedIn',"true");
         this.router.navigate(['/profile']);
-        
 
       }, error: msg => {
         this.errMsg = <any>msg;
