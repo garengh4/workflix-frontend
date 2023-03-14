@@ -16,14 +16,9 @@
     margin: auto;
 }
 
-input,
-textarea {
-    background-color: #4D4D4D;
-    color: #A1A1A1;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 0.5em;
-}
+.email-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
 
 button {
     background-color: #99582A;

@@ -6,8 +6,18 @@
         </div>
         <div class="add-profile-form">
             <h2>Add New Profile</h2>
-            <input type="text" formControlName="emailId" placeholder="Email">
-            <input type="text" formControlName="firstName" placeholder="First name">
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" formControlName="emailId" placeholder="Email" readonly>
+                </mat-form-field>
+            </div>
+            <div class="email-container">
+                <mat-form-field appearance="fill">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" formControlName="firstName" placeholder="Enter Username" readonly>
+                </mat-form-field>
+            </div>
             <button routerLink="/profile">Add</button>
         </div>
     </form>
