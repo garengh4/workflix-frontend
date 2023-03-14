@@ -1,6 +1,6 @@
 
 const apiBaseUrl: string = 'http://localhost:3800'
-const APPLICATION_NAME: string = '/Workflix'
+const APPLICATION_NAME: string = '/workflix'
 
 export const environment = {
   production: false,
