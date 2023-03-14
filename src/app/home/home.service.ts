@@ -12,8 +12,8 @@ export class HomeService {
 
   baseURL:string = "http://localhost:3800/Workflix";
 
-  getFilesByUserProfileId():Observable<File[]> {
-    return this.http.get<File[]>(this.baseURL + "/file-api" + "files/userProfile/{userProfileId}/");
+  getFilesByUserProfileId(userProfileId:string):Observable<File[]> {
+    return this.http.get<File[]>(this.baseURL + "/file-api" + "files/userProfile/" + userProfileId +"/"); //might need / after /file-api ? idk
   }
 
 }
