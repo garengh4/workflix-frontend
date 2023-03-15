@@ -19,16 +19,21 @@ export class HomeComponent implements OnInit {
 
   ngOnInit():void {
 
-    this.currentUserProfileId = JSON.parse(sessionStorage.getItem("currentProfile")); //Note: Make sure we're storing this
+    //Go into profile.ts and store the userProfileId onClick()
+    //sessionStorage.setItem("currentProfile", currentUserProfileId);
 
-    this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe(
-      files => {
+    this.currentUserProfileId = sessionStorage.getItem("currentProfile"); //Note: Make sure we're storing this
+
+    this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
+      next: files => {
         this.files = files;
         this.errorMessage = "";
       },
-      err => {
+      error: err => {
         this.errorMessage = err.error.errorMessage;
       }
+    }
+      
     )
   }
 
