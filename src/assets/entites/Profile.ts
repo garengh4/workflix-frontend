@@ -1,5 +1,6 @@
 export class Profile{
-    emailId: string;
-    userProfileId: string;
+    profileId: string;
     firstName: string;
+    lastName: string;
+    loginId: string;
 }
