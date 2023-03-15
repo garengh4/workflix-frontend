@@ -13,8 +13,8 @@ export class ProfileService {
     private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 
-    public getProfileByEmail(email: String): any{
-        let url = environment.backendLoginAPI+"/profile-api/"+email+"/profiles";
+    public getProfilesByLoginId(loginId: String): any{
+        let url = environment.backendLoginAPI+"/profile-api/profiles/"+loginId;
         return this.http.get(url).pipe(catchError(this.handleError));;
     }
 

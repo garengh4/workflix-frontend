@@ -10,15 +10,15 @@
             <div class="email-container">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Enter your email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="emailId" required>
-                  <mat-error *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
-                    <div *ngIf="loginForm.get('emailId').errors?.['required']">Email is required</div>
-                    <div *ngIf="loginForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
+                  <input matInput placeholder="pat@example.com" formControlName="loginId" required>
+                  <mat-error *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
+                    <div *ngIf="loginForm.get('loginId').errors?.['required']">Email is required</div>
+                    <div *ngIf="loginForm.get('loginId').errors?.['email']">Email must be a valid email address</div>
                   </mat-error>
                 </mat-form-field>
             </div>
 
-            <div class="middle-hello" *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
+            <div class="middle-hello" *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
                 <p>Hello</p>
             </div>
 
@@ -34,7 +34,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="middle-hello" *ngIf="loginForm.get('emailId').invalid && (loginForm.get('emailId').dirty || loginForm.get('emailId').touched)">
+            <div class="middle-hello" *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
                 <p>Hello</p>
                 <p>Hello</p>
             </div>

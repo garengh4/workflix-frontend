@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   public createLoginForm() {
     this.loginForm = this.fb.group({
-      emailId: [this.loginEntry.emailId, [Validators.required], null],
-      password: [this.loginEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
+      loginId: [this.loginEntry.loginId, [Validators.required], null],
+      password: [this.loginEntry.password, [Validators.required, Validators.minLength(5), this.passwordStrengthValidator], null],
     });
   }
   passwordStrengthValidator(control: FormControl): { [key: string]: boolean } | null {
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
-        localStorage.setItem('emailId',<string>this.loginEntry.emailId);
+        localStorage.setItem('emailId',<string>this.loginEntry.loginId);
         localStorage.setItem('isLoggedIn',"true");
         this.router.navigate(['/profile']);
 

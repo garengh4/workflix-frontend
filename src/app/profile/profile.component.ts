@@ -18,7 +18,7 @@ ngOnInit(): void {
   }
 
   public getProfileByEmail() {
-        this.profileService.getProfileByEmail(localStorage.getItem('emailId')).subscribe({
+        this.profileService.getProfilesByLoginId(localStorage.getItem('loginId')).subscribe({
           next: data =>{
             this.profiles =data;
           }
