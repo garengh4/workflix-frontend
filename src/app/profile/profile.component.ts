@@ -13,6 +13,11 @@ profiles: Profile[];
 
 constructor(private profileService: ProfileService, private router: Router){}
   
+
+setCurrentProfileId(profileId:string):void {
+  localStorage.setItem("currentProfileId",profileId);
+}
+
 ngOnInit(): void {
     this.getProfileByEmail();
   }
