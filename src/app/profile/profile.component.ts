@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit{
     localStorage.setItem("loginId","");
     localStorage.setItem("isLoggedIn","false");
     localStorage.setItem("currentProfileId",""); 
+
   }
 
   public getProfileByEmail() {

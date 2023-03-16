@@ -1,4 +1,7 @@
 <div class="container-fluid">
+  <div class="text-center">
+    <h3>{{currentProfileName}}</h3>
+  </div>
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -39,3 +42,4 @@
   </mat-accordion>
 </div>
 <button (click)="logout()" routerLink="/login">logout</button>
+<button (click)="switchProfile()" routerLink="/profile">Switch Profile</button>
