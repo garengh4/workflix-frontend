@@ -18,6 +18,10 @@ setCurrentProfileId(profileId:string):void {
   localStorage.setItem("currentProfileId",profileId);
 }
 
+setCurrentProfileName(currentProfileName:string): void {
+  localStorage.setItem("currentProfileName",currentProfileName);
+}
+
 ngOnInit(): void {
     this.getProfileByEmail();
   }
