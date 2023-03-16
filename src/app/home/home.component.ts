@@ -17,12 +17,17 @@ export class HomeComponent implements OnInit {
   files: File[];
   currentUserProfileId:string;
 
+  logout():void {
+    localStorage.setItem("loginId","");
+    localStorage.setItem("isLoggedIn","false");
+    localStorage.setItem("currentProfileId",""); 
+    //could just use localStorage.clear() 
+    //but it's possible we may not want to clear everything
+  }
+
   ngOnInit():void {
 
-    //Go into profile.ts and store the userProfileId onClick()
-    //sessionStorage.setItem("currentProfile", currentUserProfileId);
-
-    this.currentUserProfileId = sessionStorage.getItem("currentProfile"); //Note: Make sure we're storing this
+    this.currentUserProfileId = sessionStorage.getItem("currentProfileId"); 
 
     this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
       next: files => {

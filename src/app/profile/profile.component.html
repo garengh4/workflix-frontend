@@ -11,7 +11,9 @@
                 <mat-card>
                     <img mat-card-image src="../../assets/Images/user1.png">
                     <mat-card-actions>
-                        <button routerLink="/home" mat-button>{{id.firstName}} {{id.lastName}}</button>
+                        <button (click)="setCurrentProfileId(id.profileId)" routerLink="/home" mat-button>
+                            {{id.firstName}} {{id.lastName}}
+                        </button>
                     </mat-card-actions>
                 </mat-card>
             </div>
