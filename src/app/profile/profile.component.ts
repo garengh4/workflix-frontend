@@ -10,6 +10,7 @@ import { ProfileService } from './profile.service';
 })
 
 export class ProfileComponent implements OnInit{
+
 profiles: Profile[];
 profileId: string;
 successMsg: string;
@@ -17,6 +18,10 @@ errMsg: string;
 
 
 constructor(private profileService: ProfileService, private router: Router){}
+
+ngOnInit(): void {
+    this.getProfileByEmail();
+  }
  
 public deleteProfile(profile:Profile){
     if( confirm("Are you sure you want to delete "+profile.firstName + " " + profile.lastName+"'s profile?")){
@@ -34,21 +39,24 @@ public deleteProfile(profile:Profile){
   
 }
 
-setCurrentProfileId(profileId:string):void {
-  localStorage.setItem("currentProfileId",profileId);
-}
+  setCurrentProfileId(profileId:string):void {
+    localStorage.setItem("currentProfileId",profileId);
+  }
 
-ngOnInit(): void {
-    this.getProfileByEmail();
+  public logout():void {
+    localStorage.setItem("loginId","");
+    localStorage.setItem("isLoggedIn","false");
+    localStorage.setItem("currentProfileId",""); 
+
   }
 
   public getProfileByEmail() {
-        this.profileService.getProfilesByLoginId(localStorage.getItem('loginId')).subscribe({
-          next: data =>{
-            this.profiles =data;
-          }
-        }
-        )
+    this.profileService.getProfilesByLoginId(localStorage.getItem('loginId')).subscribe({
+      next: data =>{
+        this.profiles =data;
       }
     }
+    )
+  }
+}
 

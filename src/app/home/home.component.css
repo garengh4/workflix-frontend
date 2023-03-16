@@ -5,6 +5,10 @@
     background-color: #D9D9D9;
 }
 
+h3 {
+    color: #99582A;
+}
+
 .card-title, .card-text {
     word-wrap: normal;
     font-size: 75%;
