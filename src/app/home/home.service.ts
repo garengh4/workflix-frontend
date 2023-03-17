@@ -10,10 +10,10 @@ export class HomeService {
 
   constructor(private http:HttpClient) { }
 
-  baseURL:string = "http://localhost:3800/Workflix";
+  baseURL:string = "http://localhost:3800/workflix"; 
 
   getFilesByUserProfileId(userProfileId:string):Observable<File[]> {
-    return this.http.get<File[]>(this.baseURL + "/file-api" + "files/userProfile/" + userProfileId +"/"); //might need / after /file-api ? idk
+    return this.http.get<File[]>(this.baseURL + "/file-api/" + "files/userProfile/" + userProfileId +"/");
   }
 
 }

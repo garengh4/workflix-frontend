@@ -1,8 +1,8 @@
 export class File {
-    fileName: string;
-    fileUrl: string;
-    fileId: number;
-    categoryName: string;
-    userProfileId: string;
-    descriptions: string;
+    fileId:number;
+    fileName:string;
+    userProfileId:string;
+    descriptions:string;
+    categoryName:string;
+    fileUrl:string;
 }
