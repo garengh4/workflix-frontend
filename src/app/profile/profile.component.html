@@ -12,7 +12,7 @@
                     <mat-icon (click)="deleteProfile(id)" class="deleteIcon" inline="flex-repeat-container">delete</mat-icon>
                     <img mat-card-image src="../../assets/Images/user1.png">
                     <mat-card-actions>
-                        <button (click)="setCurrentProfileId(id.profileId); setCurrentProfileId(id.firstName)" routerLink="/home" mat-button>
+                        <button (click)="setCurrentProfileId(id.profileId); setCurrentProfileName(id.firstName)" routerLink="/home" mat-button>
                             {{id.firstName}} {{id.lastName}}
                         </button>
                         
