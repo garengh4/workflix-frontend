@@ -35,6 +35,11 @@
     text-align: center;
 }
 
+.deleteIcon{
+    background: #FFE1A8;
+    justify-content:right;
+}
+
 @media screen and (min-width: 1900px) {
     .container {
         width: 80%;

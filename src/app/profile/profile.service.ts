@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, Observable, throwError } from "rxjs";
 import { Profile } from "src/assets/entites/Profile";
@@ -16,6 +16,11 @@ export class ProfileService {
     public getProfilesByLoginId(loginId: String): any{
         let url = environment.backendLoginAPI+"/profile-api/profiles/"+loginId;
         return this.http.get(url).pipe(catchError(this.handleError));;
+    }
+
+    public deleteProfile(profileId: string):any{
+        let url=environment.backendLoginAPI+"/profile-api/delete/"+profileId;
+        return this.http.delete(url, {responseType: "text"}).pipe(catchError(this.handleError));;
     }
 
     private handleError(err: HttpErrorResponse) {

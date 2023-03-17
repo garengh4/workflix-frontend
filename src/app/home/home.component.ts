@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   files: File[];
   currentUserProfileId:string;
+  currentProfileName:string = "";
 
   logout():void {
     localStorage.setItem("loginId","");
@@ -23,9 +24,17 @@ export class HomeComponent implements OnInit {
     localStorage.setItem("currentProfileId","");
   }
 
+  switchProfile():void {
+    localStorage.setItem("currentProfileId", "");
+    localStorage.setItem("currentProfileName", "");
+  }
+
   ngOnInit():void {
 
     this.currentUserProfileId = localStorage.getItem("currentProfileId"); 
+    
+    this.currentProfileName = localStorage.getItem("currentProfileName");
+
 
     this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
       next: files => {
