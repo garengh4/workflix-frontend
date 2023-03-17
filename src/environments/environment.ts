@@ -3,7 +3,7 @@
 // const APPLICATION_NAME: string = '/workflix'
 
 const apiBaseUrl: string = 'https://workflix-backend-2-1678756836074.azurewebsites.net'
-const APPLICATION_NAME: string = '/workflix-java'
+const APPLICATION_NAME: string = '/workflix'
 
 
 export const environment = {
