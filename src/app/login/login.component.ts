@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/assets/entites/Login';
 import { LoginService } from './login.service';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -10,11 +18,12 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  matcher = new MyErrorStateMatcher();
   successMsg: string;
   errMsg: string;
   isLoggedIn: boolean;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -24,18 +33,11 @@ export class LoginComponent implements OnInit {
   loginEntry: Login = new Login();
   loginForm: FormGroup;
   public createLoginForm() {
-    this.loginForm = this.fb.group({
+    this.loginForm = this.formbuilder.group({
       loginId: [this.loginEntry.loginId, [Validators.required], null],
-      password: [this.loginEntry.password, [Validators.required, Validators.minLength(5), this.passwordStrengthValidator], null],
+      password: [this.loginEntry.password, [Validators.required], null],
     });
   }
-  passwordStrengthValidator(control: FormControl): { [key: string]: boolean } | null {
-    const hasSpecialCharacter = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(control.value);
-    const hasUpperCase = /[A-Z]/.test(control.value);
-    const passwordValid = hasSpecialCharacter && hasUpperCase;
-    return passwordValid ? null : { passwordStrength: true };
-  }
-
   // ===============To Html=================================================================================
   public onLogin() {
     this.errMsg = '';

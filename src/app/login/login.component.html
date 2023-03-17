@@ -1,49 +1,27 @@
 <div class="container">
 
-    <form  [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
         <div class="display">
             <img src="../../assets/Images/workflix-logo.svg" alt="W">
         </div>
         <div class="login-form">
-            <h2>Login to your account</h2>
-
-            <div class="email-container">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Enter your email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="loginId" required>
-                  <mat-error *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
-                    <div *ngIf="loginForm.get('loginId').errors?.['required']">Email is required</div>
-                    <div *ngIf="loginForm.get('loginId').errors?.['email']">Email must be a valid email address</div>
-                  </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="middle-hello" *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
-                <p>Hello</p>
-            </div>
-
-            <div class="email-container">
-                <mat-form-field appearance="fill">
-                  <mat-label>Password</mat-label>
-                  <input type="password" matInput formControlName="password" required>
-                  <mat-error *ngIf="loginForm.controls?.['password'].invalid && (loginForm.controls?.['password'].dirty || loginForm.controls?.['password'].touched)">
-                    <div *ngIf="loginForm.controls?.['password'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="loginForm.controls?.['password'].errors?.['minlength']">Password must be at least 8 characters long.</div>
-                    <div *ngIf="loginForm.controls?.['password'].errors?.['passwordStrength']">Password must have atlease one Uppercase and one Special character</div>
-                  </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="middle-hello" *ngIf="loginForm.get('loginId').invalid && (loginForm.get('loginId').dirty || loginForm.get('loginId').touched)">
-                <p>Hello</p>
-                <p>Hello</p>
-            </div>
-
-            <button [disabled]="!loginForm.valid">Login</button>
-        </div>
-
-        <div>
-            <p>Don't have an account? <a routerLink="/signup">Sign up </a></p>
+            <h3>Login to your account</h3>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="loginId" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="loginForm.get('loginId').errors?.['required']">
+                    Login Id is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="loginForm.get('password').errors?.['required']">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <button class="mat-raised-btn" mat-raised-button>Login</button>
+            <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
         </div>
     </form>
 
