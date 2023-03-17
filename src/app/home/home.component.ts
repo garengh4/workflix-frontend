@@ -32,7 +32,9 @@ export class HomeComponent implements OnInit {
   ngOnInit():void {
 
     this.currentUserProfileId = localStorage.getItem("currentProfileId"); 
+    
     this.currentProfileName = localStorage.getItem("currentProfileName");
+
 
     this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
       next: files => {
