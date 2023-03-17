@@ -43,6 +43,10 @@ public deleteProfile(profile:Profile){
     localStorage.setItem("currentProfileId",profileId);
   }
 
+  setCurrentProfileName(profileName:string):void {
+    localStorage.setItem("currentProfileName",profileName);
+  }
+
   public logout():void {
     localStorage.setItem("loginId","");
     localStorage.setItem("isLoggedIn","false");
