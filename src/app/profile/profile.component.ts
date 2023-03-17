@@ -8,15 +8,36 @@ import { ProfileService } from './profile.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit{
-  profiles: Profile[];
 
-  constructor(private profileService: ProfileService, private router: Router){}
+profiles: Profile[];
+profileId: string;
+successMsg: string;
+errMsg: string;
 
-  ngOnInit(): void {
+
+constructor(private profileService: ProfileService, private router: Router){}
+
+ngOnInit(): void {
     this.getProfileByEmail();
   }
+ 
+public deleteProfile(profile:Profile){
+    if( confirm("Are you sure you want to delete "+profile.firstName + " " + profile.lastName+"'s profile?")){
+      this.profileService.deleteProfile(profile.profileId).subscribe({
+        next: msg => {
+          this.successMsg = msg;
+          window.alert(this.successMsg);
+          this.getProfileByEmail();
+        
+        }, error: msg =>{
+          this.errMsg=msg;
+        }
+      })
+    }
   
+}
 
   setCurrentProfileId(profileId:string):void {
     localStorage.setItem("currentProfileId",profileId);
