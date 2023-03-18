@@ -23,8 +23,8 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   public createSignUpForm() {
     this.signupForm = this.fb.group({
-      emailId: [this.signupEntry.emailId, [Validators.required, Validators.email], null],
-      confirmEmail: [this.signupEntry.confirmEmail, [Validators.required, this.matchValues('emailId')]],
+      loginId: [this.signupEntry.loginId, [Validators.required, Validators.email], null],
+      confirmEmail: [this.signupEntry.confirmEmail, [Validators.required, this.matchValues('loginId')]],
       password: [this.signupEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
       confirmPassword: [this.signupEntry.confirmPassword, [this.matchValues('password')]]
     });
