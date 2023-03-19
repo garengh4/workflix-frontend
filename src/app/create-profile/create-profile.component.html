@@ -20,8 +20,17 @@
                     Last Name is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
+            <mat-form-field>
+                <mat-label>Profile Id</mat-label>
+                <input matInput formControlName="profileId" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="profileForm.get('profileId').errors?.['required']">
+                    Profile Id is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
             <button class="mat-raised-btn"  mat-raised-button>Add</button>
+
         </div>
     </form>
+    <button class="mat-raised-btn" routerLink="/profile" mat-raised-button>Back</button>
 
 </div>
