@@ -51,10 +51,17 @@ export class SignUpComponent implements OnInit {
     this.signUpService.registerLogin(this.signupEntry).subscribe({
       next: msg => {
         this.signupEntry = msg;
+        console.log("-------------------------------")
+        console.log(msg)
+        console.log("-------------------------------")
+
         this.router.navigate(['/login'])
 
       }, error: msg => {
         this.errMsg = <any>msg;
+        console.log("-------------------------------")
+        console.log(this.errMsg)
+        console.log("-------------------------------")
       }
     })
   }
