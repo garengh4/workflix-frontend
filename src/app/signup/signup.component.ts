@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormG
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
+import { LoginValidators } from 'src/assets/validators/LoginValidators';
 import { SignUpService } from './signup.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -34,8 +35,10 @@ export class SignUpComponent implements OnInit {
       loginId: [this.signupEntry.loginId, [Validators.required, Validators.email], null],
       confirmEmail: [this.signupEntry.confirmEmail, [Validators.required]],
       password: [this.signupEntry.password, [Validators.required], null],
-      confirmPassword: ['']
+      confirmPassword: ['', [Validators.required], null]
     });
+    this.signupForm.get('confirmPassword').setValidators([Validators.required,LoginValidators.confirmPassword(this.signupForm.get('password'))]);
+
   }
 
 

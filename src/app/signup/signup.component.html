@@ -22,10 +22,13 @@
         </mat-error>
       </mat-form-field>
 
-
-
-
-
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-error ng-if="signupForm.controls['password'].value != signupForm.controls['confirmPassword'].value">
+          Password<strong> match!!</strong>
+        </mat-error>
+      </mat-form-field>
 
       <button class="mat-raised-btn" mat-raised-button>Sign up</button>
       <p>Already have an account? <a routerLink="/login">Login</a></p>
