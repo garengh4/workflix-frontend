@@ -23,8 +23,8 @@ export class SignUpComponent implements OnInit {
   signupForm: FormGroup;
   public createSignUpForm() {
     this.signupForm = this.fb.group({
-      emailId: [this.signupEntry.emailId, [Validators.required, Validators.email], null],
-      confirmEmail: [this.signupEntry.confirmEmail, [Validators.required, this.matchValues('emailId')]],
+      loginId: [this.signupEntry.loginId, [Validators.required, Validators.email], null],
+      confirmLogin: [this.signupEntry.confirmLogin, [Validators.required, this.matchValues('loginId')]],
       password: [this.signupEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
       confirmPassword: [this.signupEntry.confirmPassword, [this.matchValues('password')]]
     });
@@ -51,10 +51,13 @@ export class SignUpComponent implements OnInit {
     this.signupEntry = this.signupForm.value as Signup;
     this.signUpService.registerLogin(this.signupEntry).subscribe({
       next: msg => {
-        this.signupEntry = msg;
         this.router.navigate(['/login'])
+        console.log("comint into correct");
+        this.signupEntry = msg;
+        //this.router.navigate(['/login'])
 
       }, error: msg => {
+        console.log("coming into error");
         this.errMsg = <any>msg;
       }
     })

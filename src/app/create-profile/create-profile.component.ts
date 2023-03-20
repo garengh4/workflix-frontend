@@ -22,7 +22,7 @@ export class CreateProfileComponent implements OnInit {
   profileForm: FormGroup;
   public createProfileForm() {
     this.profileForm = this.fb.group({
-      emailId: localStorage.getItem('emailId').toLowerCase().toString(),
+      loginId: localStorage.getItem('loginId').toLowerCase().toString(),
       firstName: [this.ProfileEntry.firstName, [Validators.required], null],
     })
   }

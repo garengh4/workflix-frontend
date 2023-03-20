@@ -44,11 +44,13 @@ export class LoginComponent implements OnInit {
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
+        console.log("comint into correct");
         localStorage.setItem('loginId',<string>this.loginEntry.loginId);
         localStorage.setItem('isLoggedIn',"true");
         this.router.navigate(['/profile']);
 
       }, error: msg => {
+        console.log("comint into error");
         this.errMsg = <any>msg;
       }
     })
