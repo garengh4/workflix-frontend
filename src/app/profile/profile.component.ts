@@ -45,7 +45,6 @@ export class ProfileComponent implements OnInit {
     localStorage.setItem("currentProfileId", "");
   }
 
-
   public getProfileByEmail() {
     this.profileService.getProfilesByLoginId(localStorage.getItem('loginId')).subscribe({
       next: data => {
