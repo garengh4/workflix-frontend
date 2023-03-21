@@ -9,31 +9,31 @@
             <div class="email-container">
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Enter your email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="emailId" required>
-                  <mat-error *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
-                    <div class="error" *ngIf="signupForm.get('emailId').errors?.['required']">Email is required</div>
-                    <div class="error" *ngIf="signupForm.get('emailId').errors?.['email']">Email must be a valid email address</div>
+                  <input matInput placeholder="pat@example.com" formControlName="loginId" required>
+                  <mat-error *ngIf="signupForm.get('loginId').invalid && (signupForm.get('loginId').dirty || signupForm.get('loginId').touched)">
+                    <div class="error" *ngIf="signupForm.get('loginId').errors?.['required']">Email is required</div>
+                    <div class="error" *ngIf="signupForm.get('loginId').errors?.['email']">Email must be a valid email address</div>
                   </mat-error>
                 </mat-form-field>
             </div>
 
-            <div class="middle-hello" *ngIf="signupForm.get('emailId').invalid && (signupForm.get('emailId').dirty || signupForm.get('emailId').touched)">
+            <div class="middle-hello" *ngIf="signupForm.get('loginId').invalid && (signupForm.get('loginId').dirty || signupForm.get('loginId').touched)">
                 <p>Hello</p>
             </div>
 
             <div class="email-container">
                 <mat-form-field appearance="fill">
                   <mat-label>Confirm email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="confirmEmail" required>
-                  <mat-error *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
-                    <div *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+                  <input matInput placeholder="pat@example.com" formControlName="confirmLogin" required>
+                  <mat-error *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
+                    <div *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
                         Emails do not match.
                     </div>
                   </mat-error>
                 </mat-form-field>
             </div>
 
-            <div class="middle-hello" *ngIf="signupForm.get('confirmEmail').errors?.['isMatching'] && (signupForm.get('confirmEmail').dirty || signupForm.get('confirmEmail').touched)">
+            <div class="middle-hello" *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
                 <p>Hello</p>
             </div>
 
