@@ -68,7 +68,8 @@
                 <p>Hello</p>
             </div>
 
-            <button [disabled]="!signupForm.valid">Sign up</button>
+            <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+            <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button>
             <p>{{successMsg}}</p>
             <p>{{errMsg}}</p>
         </div>

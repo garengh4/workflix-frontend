@@ -18,6 +18,7 @@
                     <input matInput type="text" formControlName="lastName" placeholder="Enter Last name">
                 </mat-form-field>
             </div>
+            <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
             <button [disabled]="!profileForm.valid">Add</button>
         </div>
     </form>

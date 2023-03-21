@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
+import { LoaderService } from '../loading/loading.service';
 import { SignUpService } from './signup.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class SignUpComponent implements OnInit {
   successMsg: string;
   errMsg: string;
 
-  constructor(private fb: FormBuilder, private signUpService: SignUpService, private router: Router) { }
+  constructor(private fb: FormBuilder, private signUpService: SignUpService, private router: Router, public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.createSignUpForm();

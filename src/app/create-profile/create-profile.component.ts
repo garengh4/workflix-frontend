@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
+import { LoaderService } from '../loading/loading.service';
 import { CreateProfileService } from './create-profile.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { CreateProfileService } from './create-profile.service';
 export class CreateProfileComponent implements OnInit {
   successMsg: string;
   errMsg: string;
-  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router) { }
+  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router, public loader: LoaderService) { }
   
   ngOnInit(): void {
     this.createProfileForm();

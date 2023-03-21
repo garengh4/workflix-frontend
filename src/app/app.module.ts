@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { EnterComponent } from './enter/enter.component';
@@ -20,6 +20,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingInterceptor } from './interceptor/loading.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const modules = [
   MatNativeDateModule,
@@ -39,6 +42,7 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -48,13 +52,17 @@ const modules = [
     AngularMaterialModule,
     HttpClientModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     modules
   ],
   exports: [
     modules
   ],
-  providers: [],
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor, 
+      multi:true}],
   bootstrap: [AppComponent]
 })
 
