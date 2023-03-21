@@ -38,7 +38,6 @@ export class CreateProfileComponent implements OnInit {
         this.router.navigate(['/profile'])
 
       }, error: msg => {
-        console.log(this.ProfileEntry.firstName);
         this.errMsg = <any>msg;
       }
     })
