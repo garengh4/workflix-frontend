@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.errMsg = '';
     this.successMsg = '';
     this.loginEntry = this.loginForm.value as Login;
+    this.loginEntry.loginId=this.loginEntry.loginId.toLowerCase();
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         this.loginEntry = msg;
