@@ -22,8 +22,10 @@ export class CreateProfileComponent implements OnInit {
   profileForm: FormGroup;
   public createProfileForm() {
     this.profileForm = this.fb.group({
-      loginId: localStorage.getItem('loginId').toLowerCase().toString(),
+      profileId: [Math.floor(Math.random() * 100000)],
+      loginId: localStorage.getItem('loginId'),
       firstName: [this.ProfileEntry.firstName, [Validators.required], null],
+      lastName: [this.ProfileEntry.lastName, [Validators.required], null],
     })
   }
   public onCreateProfile(){
@@ -36,6 +38,7 @@ export class CreateProfileComponent implements OnInit {
         this.router.navigate(['/profile'])
 
       }, error: msg => {
+        console.log(this.ProfileEntry.firstName);
         this.errMsg = <any>msg;
       }
     })

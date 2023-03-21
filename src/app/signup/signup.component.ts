@@ -51,10 +51,9 @@ export class SignUpComponent implements OnInit {
     this.signupEntry = this.signupForm.value as Signup;
     this.signUpService.registerLogin(this.signupEntry).subscribe({
       next: msg => {
-        this.router.navigate(['/login'])
         console.log("comint into correct");
         this.signupEntry = msg;
-        //this.router.navigate(['/login'])
+        this.router.navigate(['/login'])
 
       }, error: msg => {
         console.log("coming into error");

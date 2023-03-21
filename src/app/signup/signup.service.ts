@@ -21,6 +21,7 @@ export class SignUpService {
         return this.http.post<Signup>(url, signup, { headers: this.headers }).pipe(catchError(this.handleError));;
     }
     private handleError(err: HttpErrorResponse) {
+        console.log(err);
         let errMsg:string='';
         if (err.error instanceof Error) {   
             errMsg=err.error.message;
