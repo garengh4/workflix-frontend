@@ -22,10 +22,8 @@ export class CreateProfileComponent implements OnInit {
   profileForm: FormGroup;
   public createProfileForm() {
     this.profileForm = this.fb.group({
-      profileId: [Math.floor(Math.random() * 100000)],
-      loginId: localStorage.getItem('loginId'),
+      emailId: localStorage.getItem('emailId').toLowerCase().toString(),
       firstName: [this.ProfileEntry.firstName, [Validators.required], null],
-      lastName: [this.ProfileEntry.lastName, [Validators.required], null],
     })
   }
   public onCreateProfile(){

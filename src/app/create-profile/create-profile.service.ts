@@ -13,7 +13,7 @@ export class CreateProfileService {
     constructor(private http: HttpClient) { }
 
     public createProfile(profileEntry: Profile): Observable<Profile> {
-        let url = environment.backendLoginAPI+"/profile-api/create";
+        let url = environment.backendLoginAPI+"/login-api/login";
         return this.http.post<Profile>(url, profileEntry, { headers: this.headers }).pipe(catchError(this.handleError));;
 
     }
