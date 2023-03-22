@@ -30,6 +30,15 @@ button {
     display: block;
 }
 
+#back-button {
+    background-color: #99582A;
+    color: white;
+    border-radius: 15px;
+    margin: 1em auto;
+    width: 3em;
+    height: 3em;
+}
+
 p {
     margin-left: 1em;
 }
