@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
-import { LoaderService } from '../loading/loading.service';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { CreateProfileService } from './create-profile.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
-import { LoaderService } from '../loading/loading.service';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { ProfileService } from './profile.service';
 
 @Component({

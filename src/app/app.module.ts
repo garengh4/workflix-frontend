@@ -20,8 +20,8 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoadingComponent } from './loading/loading.component';
-import { LoadingInterceptor } from './interceptor/loading.interceptor';
+import { LoadingComponent } from '../assets/loading/loading.component';
+import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const modules = [

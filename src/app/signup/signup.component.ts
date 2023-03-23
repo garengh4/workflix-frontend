@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
-import { LoaderService } from '../loading/loading.service';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { SignUpService } from './signup.service';
 
 @Component({
