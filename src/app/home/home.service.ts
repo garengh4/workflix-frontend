@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { File } from '../models/file';
+import { FileModel } from 'src/assets/entites/FileModel';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,12 @@ export class HomeService {
 
   baseURL:string = "http://localhost:3800/workflix"; 
 
-  getFilesByUserProfileId(userProfileId:string):Observable<File[]> {
-    return this.http.get<File[]>(this.baseURL + "/file-api/" + "files/userProfile/" + userProfileId +"/");
+  getFilesByUserProfileId(userProfileId:string):Observable<FileModel[]> {
+    return this.http.get<FileModel[]>(this.baseURL + "/file-api/" + "files/userProfile/" + userProfileId +"/");
+  }
+
+  uploadFile(formData:FormData):Observable<string> {
+    return this.http.post<string>(environment.backendLoginAPI + "/file-api/" + "upload", formData);
   }
 
 }

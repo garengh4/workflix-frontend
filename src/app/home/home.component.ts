@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Profile } from 'src/assets/entites/Profile';
-import { File } from '../models/file';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { FileModel } from 'src/assets/entites/FileModel';
 import { HomeService } from './home.service';
 
 @Component({
@@ -9,32 +8,19 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  numberOfTicks: any;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService:HomeService) { }
+
 
   errorMessage: string = "";
 
-  files: File[];
-  currentUserProfileId:string;
-  currentProfileName:string = "";
+  files: FileModel[];
 
-  logout():void {
-    localStorage.setItem("loginId","");
-    localStorage.setItem("isLoggedIn","false");
-    localStorage.setItem("currentProfileId","");
-  }
+  currentUserProfileId: string;
+  currentProfileName: string = "";
 
-  switchProfile():void {
-    localStorage.setItem("currentProfileId", "");
-    localStorage.setItem("currentProfileName", "");
-  }
-
-  ngOnInit():void {
-
-    this.currentUserProfileId = localStorage.getItem("currentProfileId"); 
-    
-    this.currentProfileName = localStorage.getItem("currentProfileName");
-
+  getFilesByUserProfileId() {
 
     this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
       next: files => {
@@ -42,11 +28,30 @@ export class HomeComponent implements OnInit {
         this.errorMessage = "";
       },
       error: err => {
-        this.errorMessage = err.error.errorMessage;
+        this.errorMessage = err.message;
       }
-    }
-      
-    )
+    })
+  }
+
+  logout(): void {
+    localStorage.setItem("loginId", "");
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("currentProfileId", "");
+  }
+
+  switchProfile(): void {
+    localStorage.setItem("currentProfileId", "");
+    localStorage.setItem("currentProfileName", "");
+  }
+
+  ngOnInit(): void {
+
+    this.currentUserProfileId = localStorage.getItem("currentProfileId");
+
+    this.currentProfileName = localStorage.getItem("currentProfileName");
+
+    this.getFilesByUserProfileId();
+
   }
 
 }

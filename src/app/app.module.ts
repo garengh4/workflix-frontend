@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { UploadComponent } from './upload/upload.component';
 
 const modules = [
   MatNativeDateModule,
@@ -39,6 +40,7 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    UploadComponent,
   ],
   imports: [
     BrowserAnimationsModule,
