@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FileModel } from 'src/assets/entites/FileModel';
 import { HomeService } from './home.service';
 
@@ -8,7 +8,6 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  numberOfTicks: any;
 
   constructor(private homeService:HomeService) { }
 

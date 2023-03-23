@@ -14,7 +14,7 @@ export class HomeService {
   baseURL:string = "http://localhost:3800/workflix"; 
 
   getFilesByUserProfileId(userProfileId:string):Observable<FileModel[]> {
-    return this.http.get<FileModel[]>(this.baseURL + "/file-api/" + "files/userProfile/" + userProfileId +"/");
+    return this.http.get<FileModel[]>(environment.backendLoginAPI + "/file-api/" + "files/userProfile/" + userProfileId +"/");
   }
 
   uploadFile(formData:FormData):Observable<string> {

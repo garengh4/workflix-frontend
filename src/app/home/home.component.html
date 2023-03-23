@@ -16,49 +16,6 @@
     </button>
   </div>
   <mat-divider></mat-divider>
-  <!-- <mat-accordion>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          My Vidoes
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="row justify-content-center">
-        <div *ngFor="let file of files" class="card m-2 col-5 col-sm-3">
-          <div style="text-align: center;">
-            <img class="card-img-top" src="assets\Images\FileImagePlaceholder.png" alt="">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">{{file.fileName}}</h5>
-            <p class="card-text text-wrap">{{file.descriptions}}</p>
-          </div>
-        </div>
-      </div>
-      <div class="text-danger" *ngIf="errorMessage">
-        <p>{{errorMessage}}</p>
-      </div>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          My Documents
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="row justify-content-center">
-        <div *ngFor="let num of [1,2]" class="card m-2 col-5 col-sm-3">
-          <div style="text-align: center;">
-            <img class="card-img-top" src="assets\Images\FilePlaceholder.png" alt="">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title">Document title</h5>
-            <p class="card-text text-wrap">Document Description</p>
-          </div>
-        </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion> -->
-
-  
 </div>
 
 <button (click)="logout()" routerLink="/login">logout</button>
