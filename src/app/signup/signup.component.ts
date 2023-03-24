@@ -36,6 +36,7 @@ export class SignUpComponent implements OnInit {
       confirmEmail: [this.signupEntry.confirmEmail, [Validators.required]],
       password: [this.signupEntry.password, [Validators.required], null],
       confirmPassword: ['', [Validators.required], null]
+
     });
     this.signupForm.get('confirmPassword').setValidators([Validators.required,LoginValidators.confirmPassword(this.signupForm.get('password'))]);
 

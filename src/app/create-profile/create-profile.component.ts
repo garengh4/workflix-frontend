@@ -37,6 +37,8 @@ export class CreateProfileComponent implements OnInit {
       profileId: [this.ProfileEntry.profileId, [Validators.required], null],
       firstName: [this.ProfileEntry.firstName, [Validators.required], null],
       lastName: [this.ProfileEntry.lastName,[Validators.required],null]
+
+
     })
   }
   public onCreateProfile(){
