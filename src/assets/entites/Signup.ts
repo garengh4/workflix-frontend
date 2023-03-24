@@ -1,6 +1,6 @@
 export class Signup {
     loginId: String;
-    confirmLogin: String;
+    confirmEmail: String;
     password: String;
     confirmPassword: String;
 }
