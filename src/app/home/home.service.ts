@@ -18,7 +18,7 @@ export class HomeService {
   }
 
   uploadFile(formData:FormData):Observable<string> {
-    return this.http.post<string>(environment.backendLoginAPI + "/file-api/" + "upload", formData);
+    return this.http.post(environment.backendLoginAPI + "/file-api/" + "upload", formData, {responseType: 'text'});
   }
 
 }
