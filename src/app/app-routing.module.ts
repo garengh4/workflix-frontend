@@ -8,7 +8,6 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EnterComponent } from './enter/enter.component';
 import { AuthGuard } from './auth/auth.guard';
-import { UploadComponent } from './upload/upload.component';
 
 const routes: Routes = [
   // { path: 'heroes', component: HeroesComponent }
@@ -18,8 +17,7 @@ const routes: Routes = [
   { path: 'home', component:  HomeComponent,canActivate: [AuthGuard] },
   { path: 'login', component:  LoginComponent},
   { path: 'profile', component:  ProfileComponent, canActivate: [AuthGuard]},
-  { path: 'enter', component:  EnterComponent},
-  { path: 'upload', component: UploadComponent, canActivate: [AuthGuard]},
+  { path: 'enter', component:  EnterComponent}
 ];
 
 @NgModule({
