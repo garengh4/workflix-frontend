@@ -20,7 +20,9 @@
                     Password is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-            <button class="mat-raised-btn" mat-raised-button>Login</button>
+                <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+            <button [disabled]="this.loader.getLoading()" class="mat-raised-btn" mat-raised-button>Login</button>
+            
             <p>Don't have an account? <a routerLink="/signup">Sign up</a></p>
         </div>
         <p>{{successMsg}}</p>

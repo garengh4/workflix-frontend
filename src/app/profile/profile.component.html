@@ -22,6 +22,7 @@
         </div>
     </div>
     <div class="footer">
+        <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
         <p routerLink="/create-profile">+</p>
     </div>
     <button (click)="logout()" routerLink="/login">logout</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { ProfileService } from './profile.service';
 
 @Component({
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   successMsg: string;
   errMsg: string;
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+constructor(private profileService: ProfileService, private router: Router, public loader: LoaderService){}
+
 
   ngOnInit(): void {
     this.getProfileByEmail();

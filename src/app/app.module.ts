@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { EnterComponent } from './enter/enter.component';
@@ -20,9 +20,11 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoadingComponent } from '../assets/loading/loading.component';
+import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
-
 
 const modules = [
   MatNativeDateModule,
@@ -43,6 +45,7 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    LoadingComponent,
     FilterByCategoryPipe
   ],
   imports: [
@@ -53,13 +56,17 @@ const modules = [
     AngularMaterialModule,
     HttpClientModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     modules
   ],
   exports: [
     modules
   ],
-  providers: [],
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor, 
+      multi:true}],
   bootstrap: [AppComponent]
 })
 
