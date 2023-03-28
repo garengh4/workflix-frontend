@@ -1,6 +1,10 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+
+import { BehaviorSubject, catchError, Observable, throwError } from "rxjs";
+import { Login } from "src/assets/entites/Login";
+import { Profile } from "src/assets/entites/Profile";
+
 import { environment } from "src/environments/environment";
 
 
@@ -9,6 +13,28 @@ import { environment } from "src/environments/environment";
 })
 
 export class ProfileService {
+
+
+
+
+
+    private loggedInData = new BehaviorSubject<Login>(JSON.parse(sessionStorage.getItem("loginEntry")));
+    updatedCustomer = this.loggedInData.asObservable();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     constructor(private http: HttpClient) { }
 

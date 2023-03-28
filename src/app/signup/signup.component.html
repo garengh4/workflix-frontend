@@ -1,81 +1,44 @@
 <div class="container">
-    <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
-        <div class="display">
-            <img src="../../assets/Images/workflix-logo.svg" alt="W">
-        </div>
-        <div class="signup-form">
-            <h2>Create your account</h2>
 
-            <div class="email-container">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Enter your email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="loginId" required>
-                  <mat-error *ngIf="signupForm.get('loginId').invalid && (signupForm.get('loginId').dirty || signupForm.get('loginId').touched)">
-                    <div class="error" *ngIf="signupForm.get('loginId').errors?.['required']">Email is required</div>
-                    <div class="error" *ngIf="signupForm.get('loginId').errors?.['email']">Email must be a valid email address</div>
-                  </mat-error>
-                </mat-form-field>
-            </div>
+  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+    <div class="display">
+      <img src="../../assets/Images/workflix-logo.svg" alt="W">
+    </div>
+    <div class="signup-form">
+      <h2>Create your account</h2>
+    
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="loginId" [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="signupForm.get('loginId').errors?.['required']">
+          Login Id is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
 
-            <div class="middle-hello" *ngIf="signupForm.get('loginId').invalid && (signupForm.get('loginId').dirty || signupForm.get('loginId').touched)">
-                <p>Hello</p>
-            </div>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="signupForm.get('password').errors?.['required']">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
 
-            <div class="email-container">
-                <mat-form-field appearance="fill">
-                  <mat-label>Confirm email</mat-label>
-                  <input matInput placeholder="pat@example.com" formControlName="confirmLogin" required>
-                  <mat-error *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
-                    <div *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
-                        Emails do not match.
-                    </div>
-                  </mat-error>
-                </mat-form-field>
-            </div>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input matInput formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-error ng-if="signupForm.controls['password'].value != signupForm.controls['confirmPassword'].value">
+          Password<strong> match!!</strong>
+        </mat-error>
+      </mat-form-field>
+      
+      <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+      <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button>
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
+    <p>{{successMsg}}</p>
+    <p>{{errMsg}}</p>
+  </form>
 
-            <div class="middle-hello" *ngIf="signupForm.get('confirmLogin').errors?.['isMatching'] && (signupForm.get('confirmLogin').dirty || signupForm.get('confirmLogin').touched)">
-                <p>Hello</p>
-            </div>
-
-            <div class="email-container">
-                <mat-form-field appearance="fill">
-                  <mat-label>Password</mat-label>
-                  <input type="password" matInput formControlName="password" required>
-                  <mat-error *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['minlength']">Minimum 8 characters</div>
-                    <div *ngIf="signupForm.controls?.['password'].errors?.['passwordStrength']">Atlease one Uppercase and one Special character required</div>
-                  </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="middle-hello" *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
-                <p>Hello</p>
-                <p>Hello</p>
-            </div>
-
-            <div class="email-container">
-                <mat-form-field appearance="fill">
-                  <mat-label>Confirm password</mat-label>
-                  <input type="password" matInput formControlName="confirmPassword" required>
-                  <mat-error *ngIf="signupForm.get('confirmPassword').errors?.['isMatching'] && (signupForm.get('confirmPassword').dirty || signupForm.get('confirmPassword').touched)">
-                    Passwords do not match.
-                  </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="middle-hello" *ngIf="signupForm.controls?.['password'].invalid && (signupForm.controls?.['password'].dirty || signupForm.controls?.['password'].touched)">
-                <p>Hello</p>
-            </div>
-
-            <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
-            <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button>
-            <p>{{successMsg}}</p>
-            <p>{{errMsg}}</p>
-        </div>
-        <div>
-            <p>Already have an account? <a routerLink="/login">Login</a></p>
-        </div>
-    </form>
 
 </div>
+

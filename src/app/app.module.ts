@@ -23,6 +23,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoadingComponent } from '../assets/loading/loading.component';
 import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
 
 const modules = [
   MatNativeDateModule,
@@ -30,7 +32,8 @@ const modules = [
   MatInputModule,
   MatButtonModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  ScrollingModule
 ];
 
 @NgModule({
@@ -43,6 +46,7 @@ const modules = [
     SignUpComponent,
     CreateProfileComponent,
     LoadingComponent,
+    FilterByCategoryPipe
   ],
   imports: [
     BrowserAnimationsModule,

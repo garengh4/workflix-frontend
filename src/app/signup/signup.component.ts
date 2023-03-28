@@ -1,16 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
+
+import { LoginValidators } from 'src/assets/validators/LoginValidators';
 import { LoaderService } from '../../assets/loading/loading.service';
+
 import { SignUpService } from './signup.service';
 
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
 export class SignUpComponent implements OnInit {
+  matcher = new MyErrorStateMatcher();
   successMsg: string;
   errMsg: string;
 
@@ -25,25 +36,13 @@ export class SignUpComponent implements OnInit {
   public createSignUpForm() {
     this.signupForm = this.fb.group({
       loginId: [this.signupEntry.loginId, [Validators.required, Validators.email], null],
-      confirmLogin: [this.signupEntry.confirmLogin, [Validators.required, this.matchValues('loginId')]],
-      password: [this.signupEntry.password, [Validators.required, Validators.minLength(8), this.passwordStrengthValidator], null],
-      confirmPassword: [this.signupEntry.confirmPassword, [this.matchValues('password')]]
+      confirmEmail: [this.signupEntry.confirmEmail, [Validators.required]],
+      password: [this.signupEntry.password, [Validators.required], null],
+      confirmPassword: ['', [Validators.required], null]
+
     });
-  }
+    this.signupForm.get('confirmPassword').setValidators([Validators.required,LoginValidators.confirmPassword(this.signupForm.get('password'))]);
 
-  passwordStrengthValidator(control: FormControl): { [key: string]: boolean } | null {
-    const hasSpecialCharacter = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(control.value);
-    const hasUpperCase = /[A-Z]/.test(control.value);
-    const passwordValid = hasSpecialCharacter && hasUpperCase;
-    return passwordValid ? null : { passwordStrength: true };
-  }
-
-  matchValues(matchTo: string) {
-    return (control: AbstractControl) => {
-      const value = control.value;
-
-      return value === control?.parent?.controls[matchTo].value ? null : { isMatching: true };
-    };
   }
 
   public onSignup() {
@@ -54,7 +53,6 @@ export class SignUpComponent implements OnInit {
       next: msg => {
         this.signupEntry = msg;
         this.router.navigate(['/login'])
-
       }, error: msg => {
         this.errMsg = <any>msg;
       }
