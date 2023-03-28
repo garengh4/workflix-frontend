@@ -20,6 +20,9 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
+
 
 const modules = [
   MatNativeDateModule,
@@ -27,7 +30,8 @@ const modules = [
   MatInputModule,
   MatButtonModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  ScrollingModule
 ];
 
 @NgModule({
@@ -39,6 +43,7 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    FilterByCategoryPipe
   ],
   imports: [
     BrowserAnimationsModule,
