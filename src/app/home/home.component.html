@@ -17,6 +17,9 @@
           <button class="btn float-right">
             <a href="{{file.fileUrl}}"><i class="material-icons">download</i></a>
           </button>
+          <button class="btn float-right" (click)="deleteFile(file.fileName)">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </mat-list-item>
     </cdk-virtual-scroll-viewport>

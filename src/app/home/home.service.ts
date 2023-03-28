@@ -21,4 +21,8 @@ export class HomeService {
     return this.http.post(environment.backendLoginAPI + "/file-api/" + "upload", formData, {responseType: 'text'});
   }
 
+  deleteFile(fileName:string): Observable<string> {
+    return this.http.delete(environment.backendLoginAPI + "/file-api/" + "file/delete/" + fileName + "/", {responseType: 'text'});
+  }
+
 }

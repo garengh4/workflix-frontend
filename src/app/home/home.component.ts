@@ -41,10 +41,9 @@ export class HomeComponent implements OnInit {
     this.homeService.getFilesByUserProfileId(this.currentUserProfileId).subscribe({
       next: files => {
         this.files = files;
-        this.errorMessage = "";
       },
       error: err => {
-        this.errorMessage = err.message;
+        this.errorMessage = err.error;
         this.successMessage = "";
       }
     })
@@ -90,7 +89,6 @@ export class HomeComponent implements OnInit {
       },
       error: err => {
         this.errorMessage = err.error;
-        console.log(err);
         this.successMessage = "";
       }
     });
@@ -124,6 +122,22 @@ export class HomeComponent implements OnInit {
     }
 
 
+  }
+
+  deleteFile(fileName:string){
+    this.homeService.deleteFile(fileName).subscribe({
+      next: response => {
+        this.successMessage = response;
+      },
+      error: err => {
+        this.errorMessage = err.error;
+        this.successMessage = "";
+      },
+      complete: () => {
+        this.updateFilesView();
+      }
+    }
+    )
   }
 
 }
