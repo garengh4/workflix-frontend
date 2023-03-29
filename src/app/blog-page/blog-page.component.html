@@ -1,0 +1,25 @@
+<div class="container">
+
+    <form [formGroup]="blogForm">
+        <div class="add-profile-form">
+            <h2>Create your blog here</h2>
+            <mat-form-field class="input">
+                <mat-label>Category</mat-label>
+                <input matInput formControlName="firstName" placeholder="Category">
+            </mat-form-field>
+            <mat-form-field class="input">
+                <mat-label>Blog Title</mat-label>
+                <input matInput formControlName="lastName" placeholder="Title" required>
+            </mat-form-field>
+            <mat-form-field class="text">
+                <mat-label>Profile Id</mat-label>
+                <textarea rows="10" placeholder="Once upon a time..." class="text-area"></textarea>
+            </mat-form-field>
+            <button class="mat-raised-btn" routerLink="/blog" mat-raised-button>Save</button>
+
+
+        </div>
+    </form>
+    <button class="mat-raised-btn" routerLink="/blog" mat-raised-button>Back</button>
+
+</div>
