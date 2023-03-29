@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Profile } from 'src/assets/entites/Profile';
+import { AuthService } from '../auth/auth.service';
 import { File } from '../models/file';
 import { HomeService } from './home.service';
 
@@ -10,7 +11,7 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private auth: AuthService) { }
 
   errorMessage: string = "";
 
@@ -19,9 +20,7 @@ export class HomeComponent implements OnInit {
   currentProfileName:string = "";
 
   logout():void {
-    localStorage.setItem("loginId","");
-    localStorage.setItem("isLoggedIn","false");
-    localStorage.setItem("currentProfileId","");
+    this.auth.logout();
   }
 
   switchProfile():void {

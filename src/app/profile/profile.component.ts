@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
+import { AuthService } from '../auth/auth.service';
 import { ProfileService } from './profile.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-profile',
@@ -15,11 +17,14 @@ export class ProfileComponent implements OnInit {
   successMsg: string;
   errMsg: string;
 
-  constructor(private profileService: ProfileService, private router: Router) { }
+  private helper = new JwtHelperService();
+
+  constructor(private profileService: ProfileService, private router: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.getProfileByEmail();
   }
+  
   public deleteProfile(profile: Profile) {
     if (confirm("Are you sure you want to delete " + profile.firstName + " " + profile.lastName + "'s profile?")) {
       this.profileService.deleteProfile(profile.profileId).subscribe({
@@ -35,18 +40,17 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  public logout():void{
+    this.auth.logout();
+  }
+
   setCurrentProfileId(profileId: string): void {
     localStorage.setItem("currentProfileId", profileId);
   }
 
-  public logout(): void {
-    localStorage.setItem("loginId", "");
-    localStorage.setItem("isLoggedIn", "false");
-    localStorage.setItem("currentProfileId", "");
-  }
-
   public getProfileByEmail() {
-    this.profileService.getProfilesByLoginId(localStorage.getItem('loginId')).subscribe({
+    const decodedToken = this.helper.decodeToken(localStorage.getItem('access_token'));
+    this.profileService.getProfilesByLoginId(decodedToken.sub).subscribe({
       next: data => {
         this.profiles = data;
         console.log(this.profiles)

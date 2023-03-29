@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { EnterComponent } from './enter/enter.component';
@@ -20,6 +20,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthInterceptor } from './auth/auth.interceptors';
 
 const modules = [
   MatNativeDateModule,
@@ -54,7 +55,7 @@ const modules = [
   exports: [
     modules
   ],
-  providers: [],
+  providers: [{ provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 
