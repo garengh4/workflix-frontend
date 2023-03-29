@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { EnterComponent } from './enter/enter.component';
@@ -24,6 +24,11 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AddCategoriesComponent } from './add-categories/add-categories.component';
+import { LoadingComponent } from '../assets/loading/loading.component';
+import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
 
 const modules = [
   MatNativeDateModule,
@@ -31,7 +36,8 @@ const modules = [
   MatInputModule,
   MatButtonModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  ScrollingModule
 ];
 
 @NgModule({
@@ -47,6 +53,8 @@ const modules = [
     BlogPageComponent,
     CategoriesComponent,
     AddCategoriesComponent,
+    LoadingComponent,
+    FilterByCategoryPipe
   ],
   imports: [
     BrowserAnimationsModule,
@@ -56,13 +64,17 @@ const modules = [
     AngularMaterialModule,
     HttpClientModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     modules
   ],
   exports: [
     modules
   ],
-  providers: [],
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor, 
+      multi:true}],
   bootstrap: [AppComponent]
 })
 

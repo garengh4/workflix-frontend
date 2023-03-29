@@ -6,6 +6,7 @@
         </div>
         <div class="add-profile-form">
             <h2>Add New Profile</h2>
+
             <mat-form-field>
                 <mat-label>First Name</mat-label>
                 <input matInput formControlName="firstName" [errorStateMatcher]="matcher">
@@ -27,8 +28,8 @@
                     Profile Id is <strong>required</strong>
                 </mat-error>
             </mat-form-field>
-            <button class="mat-raised-btn"  mat-raised-button>Add</button>
-
+            <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+            <button [disabled]="!profileForm.valid">Add</button>
 
         </div>
     </form>

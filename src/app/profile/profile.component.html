@@ -12,7 +12,7 @@
                     <mat-icon (click)="deleteProfile(id)" class="deleteIcon" inline="flex-repeat-container">delete</mat-icon>
                     <img routerLink="/home" mat-card-image src="../../assets/Images/user1.png">
                     <mat-card-actions>
-                        <button (click)="setCurrentProfileId(id.profileId); setCurrentProfileId(id.firstName)" routerLink="/home" mat-button>
+                        <button (click)="setCurrentProfileId(id.profileId)" routerLink="/home" mat-button>
                             {{id.firstName}} {{id.lastName}}
                         </button>
                         
@@ -22,6 +22,7 @@
         </div>
     </div>
     <div class="footer">
+        <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
         <p routerLink="/create-profile">+</p>
     </div>
     <button (click)="logout()" routerLink="/login">logout</button>

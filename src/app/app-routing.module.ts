@@ -15,7 +15,7 @@ import { CategoriesComponent } from './categories/categories.component'
 
 const routes: Routes = [
   // { path: 'heroes', component: HeroesComponent }
-  { path: '', redirectTo:'login', pathMatch:'full'},
+  { path: '', redirectTo:'enter', pathMatch:'full'},
   { path: 'signup', component:  SignUpComponent},
   { path: 'create-profile', component:  CreateProfileComponent, canActivate: [AuthGuard]},
   { path: 'home', component:  HomeComponent,canActivate: [AuthGuard] },

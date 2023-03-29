@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormG
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/assets/entites/Login';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { LoginService } from './login.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -18,12 +19,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
   matcher = new MyErrorStateMatcher();
   successMsg: string;
   errMsg: string;
   isLoggedIn: boolean;
 
-  constructor(private formbuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
+  constructor(private formbuilder: FormBuilder, private loginService: LoginService, private router: Router, public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -43,8 +45,10 @@ export class LoginComponent implements OnInit {
     this.errMsg = '';
     this.successMsg = '';
     this.loginEntry = this.loginForm.value as Login;
+    this.loginEntry.loginId=this.loginEntry.loginId.toLowerCase();
     this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
+        console.log("caught");
         this.loginEntry = msg;
         localStorage.setItem('loginId',<string>this.loginEntry.loginId);
         localStorage.setItem('isLoggedIn',"true");

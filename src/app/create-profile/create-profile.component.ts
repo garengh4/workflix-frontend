@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Valida
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { CreateProfileService } from './create-profile.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,7 +24,7 @@ export class CreateProfileComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   successMsg: string;
   errMsg: string;
-  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router) { }
+  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router, public loader: LoaderService) { }
   
   ngOnInit(): void {
     this.createProfileForm();
