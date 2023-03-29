@@ -20,6 +20,10 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BlogComponent } from './blog/blog.component';
+import { BlogPageComponent } from './blog-page/blog-page.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { AddCategoriesComponent } from './add-categories/add-categories.component';
 import { LoadingComponent } from '../assets/loading/loading.component';
 import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -45,6 +49,10 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    BlogComponent,
+    BlogPageComponent,
+    CategoriesComponent,
+    AddCategoriesComponent,
     LoadingComponent,
     FilterByCategoryPipe
   ],
