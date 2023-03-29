@@ -1,4 +1,5 @@
 <div class="container">
+
   <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
     <div class="display">
       <img src="../../assets/Images/workflix-logo.svg" alt="W">
@@ -30,12 +31,14 @@
         </mat-error>
       </mat-form-field>
       
-      <button class="mat-raised-btn" mat-raised-button>Sign up</button>
+      <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+      <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button>
       <p>Already have an account? <a routerLink="/login">Login</a></p>
     </div>
     <p>{{successMsg}}</p>
     <p>{{errMsg}}</p>
   </form>
+
 
 </div>
 

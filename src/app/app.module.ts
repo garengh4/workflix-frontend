@@ -20,6 +20,11 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { LoadingComponent } from '../assets/loading/loading.component';
+import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
 import { AuthInterceptor } from './auth/auth.interceptors';
 
 const modules = [
@@ -28,7 +33,8 @@ const modules = [
   MatInputModule,
   MatButtonModule,
   MatCardModule,
-  MatToolbarModule
+  MatToolbarModule,
+  ScrollingModule
 ];
 
 @NgModule({
@@ -40,6 +46,8 @@ const modules = [
     ProfileComponent,
     SignUpComponent,
     CreateProfileComponent,
+    LoadingComponent,
+    FilterByCategoryPipe
   ],
   imports: [
     BrowserAnimationsModule,
@@ -49,13 +57,16 @@ const modules = [
     AngularMaterialModule,
     HttpClientModule,
     MatExpansionModule,
+    MatProgressSpinnerModule,
     AppRoutingModule,
     modules
   ],
   exports: [
     modules
   ],
-  providers: [{ provide:HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
+  providers: [ 
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 

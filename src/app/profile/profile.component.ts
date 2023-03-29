@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
+import { LoaderService } from '../../assets/loading/loading.service';
 import { AuthService } from '../auth/auth.service';
 import { ProfileService } from './profile.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -19,7 +20,8 @@ export class ProfileComponent implements OnInit {
 
   private helper = new JwtHelperService();
 
-  constructor(private profileService: ProfileService, private router: Router, private auth: AuthService) { }
+constructor(private profileService: ProfileService, private router: Router, private auth: AuthService, public loader: LoaderService){}
+
 
   ngOnInit(): void {
     this.getProfileByEmail();

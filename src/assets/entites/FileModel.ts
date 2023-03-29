@@ -1,4 +1,4 @@
-export class File {
+export class FileModel {
     fileId:number;
     fileName:string;
     userProfileId:string;

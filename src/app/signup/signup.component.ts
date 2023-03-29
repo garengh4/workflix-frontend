@@ -3,7 +3,10 @@ import { FormBuilder, FormGroup, Validators, AbstractControl, FormControl, FormG
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Signup } from 'src/assets/entites/Signup';
+
 import { LoginValidators } from 'src/assets/validators/LoginValidators';
+import { LoaderService } from '../../assets/loading/loading.service';
+
 import { SignUpService } from './signup.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,7 +25,7 @@ export class SignUpComponent implements OnInit {
   successMsg: string;
   errMsg: string;
 
-  constructor(private fb: FormBuilder, private signUpService: SignUpService, private router: Router) { }
+  constructor(private fb: FormBuilder, private signUpService: SignUpService, private router: Router, public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.createSignUpForm();
@@ -42,9 +45,6 @@ export class SignUpComponent implements OnInit {
 
   }
 
-
-
-
   public onSignup() {
     this.errMsg = '';
     this.successMsg = '';
@@ -52,17 +52,9 @@ export class SignUpComponent implements OnInit {
     this.signUpService.registerLogin(this.signupEntry).subscribe({
       next: msg => {
         this.signupEntry = msg;
-        console.log("-------------------------------")
-        console.log(msg)
-        console.log("-------------------------------")
-
         this.router.navigate(['/login'])
-
       }, error: msg => {
         this.errMsg = <any>msg;
-        console.log("-------------------------------")
-        console.log(this.errMsg)
-        console.log("-------------------------------")
       }
     })
   }
