@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { Profile } from 'src/assets/entites/Profile';
 import { LoaderService } from '../../assets/loading/loading.service';
 import { CreateProfileService } from './create-profile.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,7 +26,11 @@ export class CreateProfileComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   successMsg: string;
   errMsg: string;
-  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router, public loader: LoaderService) { }
+
+  private helper = new JwtHelperService();
+  
+
+  constructor(private fb: FormBuilder, private createProfileService: CreateProfileService, private router: Router, public loader:LoaderService) { }
   
   ngOnInit(): void {
     this.createProfileForm();
@@ -34,7 +40,7 @@ export class CreateProfileComponent implements OnInit {
   profileForm: FormGroup;
   public createProfileForm() {
     this.profileForm = this.fb.group({
-      loginId: localStorage.getItem('loginId').toLowerCase().toString(),
+      loginId:  [(this.helper.decodeToken(localStorage.getItem('access_token'))).sub.toLowerCase()],
       profileId: [this.ProfileEntry.profileId, [Validators.required], null],
       firstName: [this.ProfileEntry.firstName, [Validators.required], null],
       lastName: [this.ProfileEntry.lastName,[Validators.required],null]

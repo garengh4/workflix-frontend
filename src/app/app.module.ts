@@ -29,6 +29,7 @@ import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
+import { AuthInterceptor } from './auth/auth.interceptors';
 
 const modules = [
   MatNativeDateModule,
@@ -72,9 +73,8 @@ const modules = [
     modules
   ],
   providers: [ 
-    { provide: HTTP_INTERCEPTORS,
-      useClass: LoadingInterceptor, 
-      multi:true}],
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi:true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true}],
   bootstrap: [AppComponent]
 })
 
