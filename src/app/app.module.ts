@@ -25,6 +25,8 @@ import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
+import { ViewFilesComponent } from './view-files/view-files.component';
+import { NgxDocViewerModule } from 'ngx-doc-viewer';
 
 const modules = [
   MatNativeDateModule,
@@ -33,7 +35,8 @@ const modules = [
   MatButtonModule,
   MatCardModule,
   MatToolbarModule,
-  ScrollingModule
+  ScrollingModule,
+  NgxDocViewerModule
 ];
 
 @NgModule({
@@ -46,7 +49,8 @@ const modules = [
     SignUpComponent,
     CreateProfileComponent,
     LoadingComponent,
-    FilterByCategoryPipe
+    FilterByCategoryPipe,
+    ViewFilesComponent
   ],
   imports: [
     BrowserAnimationsModule,

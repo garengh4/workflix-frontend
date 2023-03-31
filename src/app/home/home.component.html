@@ -4,16 +4,43 @@
   </div>
   <mat-list>
     <div mat-subheader>
-      My Files
+      My Documents
       <button class="float-right btn" (click)="updateFilesView()">
         <mat-icon>refresh</mat-icon>
       </button>
     </div>
     <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
-      <mat-list-item *cdkVirtualFor="let file of files" class="example-item">
+      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : documentFormatList" class="example-item">
         <mat-icon matListItemIcon>folder</mat-icon>
-        <div matListItemTitle>{{file.fileName}}</div>
-        <div matListItemLine>{{file.descriptions}} 
+        <div matListItemTitle>
+          <a (click)="viewFile(file.fileUrl)">
+            {{file.fileName}}
+          </a>
+        </div>
+        <div matListItemLine>{{file.descriptions}}
+          <button class="btn float-right">
+            <a href="{{file.fileUrl}}"><i class="material-icons">download</i></a>
+          </button>
+          <button class="btn float-right" (click)="deleteFile(file.fileName)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+    </cdk-virtual-scroll-viewport>
+  </mat-list>
+  <mat-list>
+    <div mat-subheader>
+      My Videos
+    </div>
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : videoFormatList" class="example-item">
+        <mat-icon matListItemIcon>folder</mat-icon>
+        <div matListItemTitle>
+          <a (click)="viewFile(file.fileUrl)">
+            {{file.fileName}}
+          </a>
+        </div>
+        <div matListItemLine>{{file.descriptions}}
           <button class="btn float-right">
             <a href="{{file.fileUrl}}"><i class="material-icons">download</i></a>
           </button>
@@ -49,13 +76,6 @@
         <input matInput formControlName="descriptions" placeholder="File Description">
         <mat-error *ngIf="uploadForm.get('descriptions').errors?.['required']">
           Description is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>File Category</mat-label>
-        <input matInput formControlName="category" placeholder="File Category">
-        <mat-error *ngIf="uploadForm.get('category').errors?.['required']">
-          Category is <strong>required</strong>
         </mat-error>
       </mat-form-field>
       <div class="file-upload p-2">
