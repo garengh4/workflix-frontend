@@ -10,10 +10,10 @@
       </button>
     </div>
     <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
-      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : documentFormatList" class="example-item">
+      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : allFileFormatList | sortFilesAlphabetically : 'fileName'" class="example-item">
         <mat-icon matListItemIcon>folder</mat-icon>
         <div matListItemTitle>
-          <a (click)="viewFile(file.fileUrl)">
+          <a (click)="viewFile(file)">
             {{file.fileName}}
           </a>
         </div>
@@ -30,13 +30,13 @@
   </mat-list>
   <mat-list>
     <div mat-subheader>
-      My Videos
+      My Images
     </div>
     <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
-      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : videoFormatList" class="example-item">
+      <mat-list-item *cdkVirtualFor="let file of files | filterByCategory : imageFormatList | sortFilesAlphabetically : 'fileName'" class="example-item">
         <mat-icon matListItemIcon>folder</mat-icon>
         <div matListItemTitle>
-          <a (click)="viewFile(file.fileUrl)">
+          <a (click)="viewFile(file)">
             {{file.fileName}}
           </a>
         </div>

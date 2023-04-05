@@ -26,7 +26,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
 import { ViewFilesComponent } from './view-files/view-files.component';
-import { NgxDocViewerModule } from 'ngx-doc-viewer';
+import { SortFilesAlphabeticallyPipe } from './home/sort-files-alphabetically.pipe';
 
 const modules = [
   MatNativeDateModule,
@@ -36,7 +36,6 @@ const modules = [
   MatCardModule,
   MatToolbarModule,
   ScrollingModule,
-  NgxDocViewerModule
 ];
 
 @NgModule({
@@ -50,7 +49,8 @@ const modules = [
     CreateProfileComponent,
     LoadingComponent,
     FilterByCategoryPipe,
-    ViewFilesComponent
+    ViewFilesComponent,
+    SortFilesAlphabeticallyPipe
   ],
   imports: [
     BrowserAnimationsModule,

@@ -33,16 +33,33 @@ export class HomeComponent implements OnInit {
   uploadForm: FormGroup;
 
   videoFormatList: string[] = ["mp4", "mov", "wmv", "avi", "webm", "html5"]; 
-  documentFormatList: string[] = ["txt", "json", "jar", "pdf", "docx", "png", "jpg", "jpeg", "doc", "xls", "xlsx", "ppt", "pptx", "svg"]
+  imageFormatList: string[] = ["jpg", "png", "jpeg", "svg"];
+  documentFormatList: string[] = ["pdf", "docx", "doc", "xls", "xlsx", "ppt", "pptx"];
+  textFormatList: string[] = ["txt", "json"];
+  allFileFormatList: string[] = [...this.documentFormatList, ...this.textFormatList];
 
   updateFilesView() {
     this.successMessage = "";
     this.getFilesByUserProfileId();
   }
 
-  viewFile(fileUrl:string) {
-    localStorage.setItem("fileUrlToView", fileUrl);
+  viewFile(file:FileModel) {
+    localStorage.setItem("fileUrlToView", file.fileUrl);
+    localStorage.setItem("isImageFile", JSON.stringify(this.isImageFile(file)));
+    this.fileCategory = this.getFileType(file.categoryName);
+
+    if (this.textFormatList.includes(this.fileCategory)) {
+      localStorage.setItem("fileCategory", "text/plain");
+    }
+    else if (this.documentFormatList.includes(this.fileCategory)) {
+      localStorage.setItem("fileCategory", "application/pdf");
+    }
+
     this.router.navigate(['/viewFiles']);
+  }
+
+  isImageFile(file:FileModel): boolean {
+    return this.imageFormatList.includes(file.categoryName);
   }
 
   getFilesByUserProfileId() {
