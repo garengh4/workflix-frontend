@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FileModel } from 'src/assets/entites/FileModel';
+import { AuthService } from '../auth/auth.service';
 import { Upload } from 'src/assets/entites/Upload';
 import { HomeService } from './home.service';
 
@@ -12,7 +13,8 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService, private formBuilder: FormBuilder, private router: Router) { }
+
+  constructor(private homeService: HomeService, private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
 
 
   errorMessage: string = "";
@@ -75,10 +77,8 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  logout(): void {
-    localStorage.setItem("loginId", "");
-    localStorage.setItem("isLoggedIn", "false");
-    localStorage.setItem("currentProfileId", "");
+  logout():void {
+    this.auth.logout();
   }
 
   switchProfile(): void {

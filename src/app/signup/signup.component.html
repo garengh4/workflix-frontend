@@ -32,7 +32,9 @@
       </mat-form-field>
       
       <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
-      <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button>
+      <!-- <button [disabled]="!signupForm.valid || this.loader.getLoading()">Sign up</button> -->
+      <button [disabled]="this.loader.getLoading()">Sign up</button>
+
       <p>Already have an account? <a routerLink="/login">Login</a></p>
     </div>
     <p>{{successMsg}}</p>
