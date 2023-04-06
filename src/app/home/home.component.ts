@@ -36,9 +36,9 @@ export class HomeComponent implements OnInit {
 
   videoFormatList: string[] = ["mp4", "mov", "wmv", "avi", "webm", "html5"]; 
   imageFormatList: string[] = ["jpg", "png", "jpeg", "svg"];
-  documentFormatList: string[] = ["pdf", "docx", "doc", "xls", "xlsx", "ppt", "pptx"];
+  documentFormatList: string[] = ["docx", "doc", "xls", "xlsx", "ppt", "pptx"];
   textFormatList: string[] = ["txt", "json"];
-  allFileFormatList: string[] = [...this.documentFormatList, ...this.textFormatList];
+  allFileFormatList: string[] = [...this.documentFormatList, ...this.textFormatList, "pdf"]; 
 
   updateFilesView() {
     this.successMessage = "";
@@ -53,8 +53,11 @@ export class HomeComponent implements OnInit {
     if (this.textFormatList.includes(this.fileCategory)) {
       localStorage.setItem("fileCategory", "text/plain");
     }
-    else if (this.documentFormatList.includes(this.fileCategory)) {
+    else if (this.fileCategory == "pdf") {
       localStorage.setItem("fileCategory", "application/pdf");
+    }
+    else {
+      localStorage.setItem("fileCategory", "application/msword");
     }
 
     this.router.navigate(['/viewFiles']);

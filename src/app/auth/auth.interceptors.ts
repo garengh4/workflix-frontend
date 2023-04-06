@@ -10,6 +10,7 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     let authReq = req;
     const token = localStorage.getItem("access_token");
+    // const overrideToken = localStorage.getItem('overrideToken');
     if (token != null) {
       authReq = req.clone({ 
         setHeaders:{

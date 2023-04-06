@@ -20,7 +20,9 @@ export class ViewFilesComponent implements OnInit {
     this.fileUrlToView = localStorage.getItem("fileUrlToView");
 
     if (!this.isImageFile) {
+      // localStorage.setItem('overrideToken', 'true'); //want to get rid of this ideally
       this.viewFilesService.downloadDoc(this.fileUrlToView, this.fileCategory).subscribe(res => {
+        // localStorage.setItem('overrideToken', 'false'); //want to get rid of this ideally
         const fileURL = URL.createObjectURL(res);
         window.open(fileURL, '_blank');
       });
