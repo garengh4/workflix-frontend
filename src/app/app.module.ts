@@ -29,6 +29,8 @@ import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
+import { ViewFilesComponent } from './view-files/view-files.component';
+import { SortFilesAlphabeticallyPipe } from './home/sort-files-alphabetically.pipe';
 import { AuthInterceptor } from './auth/auth.interceptors';
 
 const modules = [
@@ -38,7 +40,7 @@ const modules = [
   MatButtonModule,
   MatCardModule,
   MatToolbarModule,
-  ScrollingModule
+  ScrollingModule,
 ];
 
 @NgModule({
@@ -55,7 +57,9 @@ const modules = [
     CategoriesComponent,
     AddCategoriesComponent,
     LoadingComponent,
-    FilterByCategoryPipe
+    FilterByCategoryPipe,
+    ViewFilesComponent,
+    SortFilesAlphabeticallyPipe
   ],
   imports: [
     BrowserAnimationsModule,
