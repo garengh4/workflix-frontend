@@ -6,10 +6,8 @@ import { FileModel } from 'src/assets/entites/FileModel';
 })
 export class FilterByCategoryPipe implements PipeTransform {
 
-  transform(files:FileModel[], category:string): FileModel[] {
-    return files.filter(file => {
-      file.categoryName = category
-    });
+  transform(files:FileModel[], videoFormatList:string[]): FileModel[] {
+    return files ? files.filter(file => videoFormatList.includes(file.categoryName)) : [];
   }
 
 }

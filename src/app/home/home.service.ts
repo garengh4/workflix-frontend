@@ -9,9 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeService {
 
-  constructor(private http:HttpClient) { }
-
-  baseURL:string = "http://localhost:3800/workflix"; 
+  constructor(private http:HttpClient) { } 
 
   getFilesByUserProfileId(userProfileId:string):Observable<FileModel[]> {
     return this.http.get<FileModel[]>(environment.backendLoginAPI + "/file-api/" + "files/userProfile/" + userProfileId +"/");
@@ -24,5 +22,4 @@ export class HomeService {
   deleteFile(fileName:string): Observable<string> {
     return this.http.delete(environment.backendLoginAPI + "/file-api/" + "file/delete/" + fileName + "/", {responseType: 'text'});
   }
-
 }

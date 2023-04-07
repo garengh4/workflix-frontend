@@ -1,13 +1,14 @@
+
 import { TestBed } from '@angular/core/testing';
 
-import { HomeService } from './home.service';
+import { ViewFilesService } from './view-files.service';
 
-describe('HomeService', () => {
-  let service: HomeService;
+describe('ViewFilesService', () => {
+  let service: ViewFilesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HomeService);
+    service = TestBed.inject(ViewFilesService);
   });
 
   it('should be created', () => {

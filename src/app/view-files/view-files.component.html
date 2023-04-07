@@ -1,0 +1,4 @@
+<div class="container p-3">
+    <img *ngIf="isImageFile" src="{{fileUrlToView}}" style="width: 100%; height: auto;" alt="No image found">
+    <button class="mat-raised-btn" (click)="goBack()">Back to Home</button>
+</div>

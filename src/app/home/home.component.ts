@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FileModel } from 'src/assets/entites/FileModel';
 import { Upload } from 'src/assets/entites/Upload';
 import { HomeService } from './home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,11 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private homeService: HomeService, private formBuilder: FormBuilder) { }
+  constructor(
+    private homeService: HomeService, 
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
 
 
   errorMessage: string = "";
@@ -24,16 +29,44 @@ export class HomeComponent implements OnInit {
   currentProfileName: string = "";
 
   fileName: string;
+  fileCategory: string;
   file: File;
-  fileURL: string;
   formData = new FormData();
 
   uploadEntry: Upload = new Upload();
   uploadForm: FormGroup;
 
+  videoFormatList: string[] = ["mp4", "mov", "wmv", "avi", "webm", "html5"]; 
+  imageFormatList: string[] = ["jpg", "png", "jpeg", "svg"];
+  documentFormatList: string[] = ["docx", "doc", "xls", "xlsx", "ppt", "pptx"];
+  textFormatList: string[] = ["txt", "json"];
+  allFileFormatList: string[] = [...this.documentFormatList, ...this.textFormatList, "pdf"]; 
+
   updateFilesView() {
     this.successMessage = "";
     this.getFilesByUserProfileId();
+  }
+
+  viewFile(file:FileModel) {
+    localStorage.setItem("fileUrlToView", file.fileUrl);
+    localStorage.setItem("isImageFile", JSON.stringify(this.isImageFile(file)));
+    this.fileCategory = this.getFileType(file.categoryName);
+
+    if (this.textFormatList.includes(this.fileCategory)) {
+      localStorage.setItem("fileCategory", "text/plain");
+    }
+    else if (this.fileCategory == "pdf") {
+      localStorage.setItem("fileCategory", "application/pdf");
+    }
+    else {
+      localStorage.setItem("fileCategory", "application/msword");
+    }
+
+    this.router.navigate(['/viewFiles']);
+  }
+
+  isImageFile(file:FileModel): boolean {
+    return this.imageFormatList.includes(file.categoryName);
   }
 
   getFilesByUserProfileId() {
@@ -74,7 +107,6 @@ export class HomeComponent implements OnInit {
 
   public createUploadForm() {
     this.uploadForm = this.formBuilder.group({
-      category: [this.uploadEntry.category, [Validators.required]],
       descriptions: [this.uploadEntry.descriptions, [Validators.required]]
     });
   }
@@ -82,7 +114,6 @@ export class HomeComponent implements OnInit {
   upload(formData: FormData) {
     this.homeService.uploadFile(this.formData).subscribe({
       next: fileURL => {
-        this.fileURL = fileURL;
         this.errorMessage = "";
         this.successMessage = "Successfully uploaded your file";
         this.uploadFormVisible = false;
@@ -97,7 +128,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => { //Don't want to update view before server has a chance to respond
       this.updateFilesView();
-    }, 1500);
+    }, 2000);
   }
 
 
@@ -114,9 +145,10 @@ export class HomeComponent implements OnInit {
     if (this.file) {
 
       this.fileName = this.file.name;
+      this.fileCategory = this.getFileType(this.fileName);
 
       this.formData.append("file", this.file);
-      this.formData.append("category", this.uploadForm.get('category').value);
+      this.formData.append("category", this.getFileType(this.fileName));
       this.formData.append("descriptions", this.uploadForm.get('descriptions').value);
       this.formData.append("profileId", this.currentUserProfileId);
     }
@@ -138,6 +170,10 @@ export class HomeComponent implements OnInit {
       }
     }
     )
+  }
+  
+  getFileType(fileName:string): string {
+    return fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
   }
 
 }
