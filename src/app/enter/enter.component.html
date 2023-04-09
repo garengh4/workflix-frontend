@@ -1,10 +1,27 @@
-<div class="container">
-    <img class="logo-img" src="../../assets/Images/workflix-logo.svg" alt="W">
-    <button class="main-button">
-        <img class="workflix-img" src="../../assets/Images/Logos_workflix (2).svg">
-        <p class="text">The one stop for all your uploads...</p>
-        <button class="right-arrow" routerLink="/login">
-            <img class="arrow" src="../../assets/Images/icons8-right-arrow-64 (1).png">
-        </button>
-    </button>
-</div>
+<mat-card class="container">
+    <mat-card-header  class="display">
+        <img src="../../assets/Images/workflix-logo.svg" alt="W">
+        <img src="../../assets/Images/workflix-logo-title.svg">
+    </mat-card-header >
+    <mat-card-content class="console">
+        <p class="text">
+            The File-Sharing and Blogging App
+            <br><br>
+            Built by bootstrapping springboot and microservicing for eureka,
+            we load-balancing and dockerize imaging for CI/CD on google cloud.
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+        <button class="mat-raised-btn" routerLink="/login" mat-raised-button>Enter</button>
+    </mat-card-actions>
+
+    <mat-card-footer class="footer">
+        <span>
+            <a href="https://github.com/garengh4/workflix-frontend" target="__blank"><img src="../../assets/Images/logo-github.svg"></a>
+            &nbsp;
+            <a href="https://github.com/garengh4/workflix-backend" target="__blank"><img src="../../assets/Images/logo-github.svg"></a>
+        </span>
+    </mat-card-footer>
+
+</mat-card>
