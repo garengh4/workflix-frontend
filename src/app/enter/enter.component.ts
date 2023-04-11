@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./enter.component.css']
 })
 export class EnterComponent {
-  public profileLink = "/profile"
 
 }

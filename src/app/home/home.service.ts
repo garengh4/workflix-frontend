@@ -22,5 +22,4 @@ export class HomeService {
   deleteFile(fileName:string): Observable<string> {
     return this.http.delete(environment.backendLoginAPI + "/file-api/" + "file/delete/" + fileName + "/", {responseType: 'text'});
   }
-
 }

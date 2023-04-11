@@ -1,44 +1,63 @@
 .container {
     display: flex;
-    justify-content: center;
     align-items: center;
     width: 100%;
-    height: 80%;
+    height: 85%;
     overflow: hidden;
     position: absolute;
+    background-color: #FFE1A8;
     flex-direction: column;
-    color: #99582A;
-    font-size: 20px;
-    font-weight: bold;
     margin-top: 4em;
 }
 
-.logo-img {
+/* controls logo size and placement */
+.display {
     width: 10em;
-}
-
-.main-button {
-    background: #ffe1a880;
-    border: transparent;
-    margin-top: 35px;
-}
-
-.right-arrow {
-    background: transparent;
-    width: 10em;
-    height: 10em;
-    border: transparent;
-}
-
-.arrow {
-    width: 9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .text {
     color: #99582A;
-    font-size: 1.4em;
+    padding:0 1em;
+    text-align: center;
 }
 
-.workflix-img {
-    margin-top: 25px;
+.mat-raised-btn {
+    background-color: #99582A  !important;;
+    color: white !important;
+    border-radius: 8px;
+    margin: 1em auto;
+    width: 8em;
+    height: 2em;
+    display: block;
+}
+
+@media screen and (min-width: 1900px) {
+    .container {
+        margin-left:25em;
+    }
+    .display{
+        width: 15em;
+    }
+    .console{
+        width:35em;
+    }
+    .text{
+        font-size: x-large;
+        font-weight: bold;
+    }
+    .mat-raised-btn{
+        margin-top: 5em;
+        width: 15em;
+        height: 3em;
+        font-size: x-large;
+
+    }
+    .footer{
+        margin-top:3em;
+    }
 }

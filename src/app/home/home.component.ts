@@ -5,6 +5,7 @@ import { FileModel } from 'src/assets/entites/FileModel';
 import { AuthService } from '../auth/auth.service';
 import { Upload } from 'src/assets/entites/Upload';
 import { HomeService } from './home.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,8 +14,11 @@ import { HomeService } from './home.service';
 })
 export class HomeComponent implements OnInit {
 
-
-  constructor(private homeService: HomeService, private formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(
+    private homeService: HomeService, 
+    private formBuilder: FormBuilder,
+    private router: Router
+    ) { }
 
 
   errorMessage: string = "";
@@ -167,7 +171,7 @@ export class HomeComponent implements OnInit {
     }
     )
   }
-
+  
   getFileType(fileName:string): string {
     return fileName.substring(fileName.lastIndexOf('.')+1, fileName.length) || fileName;
   }

@@ -7,7 +7,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
-import {MatSelectModule} from '@angular/material/select';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -19,7 +24,15 @@ import {MatSelectModule} from '@angular/material/select';
         MatIconModule,
         MatListModule,
         MatButtonModule,
-        MatSelectModule
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        ScrollingModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
     ],
     exports: [
         BrowserAnimationsModule,
@@ -28,7 +41,15 @@ import {MatSelectModule} from '@angular/material/select';
         MatIconModule,
         MatListModule,
         MatButtonModule,
-        MatSelectModule
+        MatNativeDateModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCardModule,
+        MatToolbarModule,
+        ScrollingModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule,
     ],
     providers: [
 
