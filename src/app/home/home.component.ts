@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { FileModel } from 'src/assets/entites/FileModel';
-import { AuthService } from '../auth/auth.service';
 import { Upload } from 'src/assets/entites/Upload';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
@@ -84,8 +82,10 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  logout():void {
-    this.auth.logout();
+  logout(): void {
+    localStorage.setItem("loginId", "");
+    localStorage.setItem("isLoggedIn", "false");
+    localStorage.setItem("currentProfileId", "");
   }
 
   switchProfile(): void {

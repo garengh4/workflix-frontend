@@ -4,8 +4,7 @@ import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { Login } from 'src/assets/entites/Login';
 import { LoaderService } from '../../assets/loading/loading.service';
-import { AuthService } from '../auth/auth.service';
-
+import { LoginService } from './login.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -26,8 +25,7 @@ export class LoginComponent implements OnInit {
   errMsg: string;
   isLoggedIn: boolean;
 
-  
-  constructor(private formbuilder: FormBuilder, private router: Router, public loader: LoaderService, private authService: AuthService) { }
+  constructor(private formbuilder: FormBuilder, private loginService: LoginService, private router: Router, public loader: LoaderService) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -48,15 +46,15 @@ export class LoginComponent implements OnInit {
     this.successMsg = '';
     this.loginEntry = this.loginForm.value as Login;
     this.loginEntry.loginId=this.loginEntry.loginId.toLowerCase();
-    this.authService.authenticateLogin(this.loginEntry).subscribe({
+    this.loginService.authenticateLogin(this.loginEntry).subscribe({
       next: msg => {
         console.log("caught");
-        localStorage.setItem('access_token', msg.accessToken);
+        this.loginEntry = msg;
+        localStorage.setItem('loginId',<string>this.loginEntry.loginId);
         localStorage.setItem('isLoggedIn',"true");
         this.router.navigate(['/profile']);
 
       }, error: msg => {
-        this.authService.logout();
         this.errMsg = <any>msg;
       }
     })
