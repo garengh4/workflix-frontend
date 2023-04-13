@@ -26,7 +26,7 @@ constructor(private blogService: BlogService, private router: Router, public loa
   
   public deleteBlog(blog: Blog) {
     if (confirm("Are you sure you want to delete the blog" + blog.title + "?")) {
-      this.blogService.deleteBlog(blog.postId).subscribe({
+      this.blogService.deleteBlog(blog.postId.toString()).subscribe({
         next: msg => {
           this.successMsg = msg;
           window.alert(this.successMsg);

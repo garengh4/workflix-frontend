@@ -9,7 +9,7 @@
                     <mat-icon (click)="deleteBlog(id)" class="deleteIcon" inline="flex-repeat-container">delete</mat-icon>
                     <img routerLink="/blog-page" mat-card-image src="../../assets/Images/360_F_164848164_eDLcO5LcnBapZls7Kh8u8kCmhL1izZoU.jpg">
                     <mat-card-actions>
-                        <button (click)="setCurrentBlogId(id.postId)" routerLink="/blog-page" mat-button>
+                        <button (click)="setCurrentBlogId(id.postId.toString())" routerLink="/blog-page" mat-button>
                             {{id.title}}
                         </button>
                         

@@ -42,9 +42,12 @@ export class BlogPageComponent implements OnInit {
 
     console.log("===============================================")
     console.log(this.BlogPageEntry)
+    this.BlogPageEntry.categoryId = Number(localStorage.getItem("currentCategoriesId"))
     // TODO: HOW TO ADD PARAMETER: CATEGORYID TO this.BlogPageEntry
     // this.BlogPageEntry = 
     console.log("===============================================")
+    console.log(this.BlogPageEntry)
+
 
 
     this.blogPageService.saveBlog(this.BlogPageEntry).subscribe({

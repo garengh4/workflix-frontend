@@ -6,7 +6,7 @@
     <div class="console">
         <div class="flex-repeat-container">
             <div *ngFor="let id of categories" class="profile-card">
-                <button class="category" (click)="setCurrentCategoriesName(id.categoryName)" (click)="setCurrentCategoriesId(id.categoryId)" routerLink="/blog" mat-button>
+                <button class="category" (click)="setCurrentCategoriesName(id.categoryName)" (click)="setCurrentCategoriesId(id.categoryId.toString())" routerLink="/blog" mat-button>
                     {{id.categoryName}}
                 </button>
             </div>
