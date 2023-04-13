@@ -1,6 +1,5 @@
 
-
-// const apiBaseUrl: string = 'https://weddingjava-app-2.herokuapp.com'
+// TODO: SET UP PROD & NON-PROD
 const APPLICATION_NAME: string = ''
 
 export const environment = {
