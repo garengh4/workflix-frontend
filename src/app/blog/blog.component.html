@@ -1,19 +1,16 @@
-
-
-
 <div class="container">
     <div class="display">
-        <h1>Recipes Blogs</h1>
+        <h1>--- Blogs</h1>
     </div>
     <div class="console">
         <div class="flex-repeat-container">
-            <div class="profile-card">
+            <div *ngFor="let id of blog" class="profile-card">
                 <mat-card>
-                    <mat-icon class="deleteIcon" inline="flex-repeat-container">delete</mat-icon>
+                    <mat-icon (click)="deleteBlog(id)" class="deleteIcon" inline="flex-repeat-container">delete</mat-icon>
                     <img routerLink="/blog-page" mat-card-image src="../../assets/Images/360_F_164848164_eDLcO5LcnBapZls7Kh8u8kCmhL1izZoU.jpg">
                     <mat-card-actions>
-                        <button class="button-box" routerLink="/blog-page" mat-button>
-                            <p class="title">My cake recipe</p>
+                        <button (click)="setCurrentBlogId(id.postId)" routerLink="/blog-page" mat-button>
+                            {{id.title}}
                         </button>
                         
                     </mat-card-actions>
@@ -22,9 +19,9 @@
         </div>
     </div>
     <div class="footer">
-        <p routerLink="/create-profile">+</p>
+        <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+        <p routerLink="/blog-page">+</p>
     </div>
     <button routerLink="/categories">Back</button>
    
 </div>
-

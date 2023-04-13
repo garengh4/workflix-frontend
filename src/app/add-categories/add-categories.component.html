@@ -1,17 +1,22 @@
 <div class="container">
 
-    <form>
+    <form [formGroup]="categoriesForm" (ngSubmit)="onAddCategories()">
         <div class="display">
             <img src="../../assets/Images/workflix-logo.svg" alt="W">
         </div>
         <div class="add-profile-form">
-            <h2>Add Category</h2>
+            <h2>Add New Category</h2>
+
             <mat-form-field>
                 <mat-label>Category Name</mat-label>
-                <input matInput formControlName="firstName">
+                <input matInput formControlName="categoryName" [errorStateMatcher]="matcher">
+                <mat-error *ngIf="categoriesForm.get('categoryName').errors?.['required']">
+                    Category Name is <strong>required</strong>
+                </mat-error>
             </mat-form-field>
-            <button routerLink="/categories" class="mat-raised-btn"  mat-raised-button>Add</button>
-
+        
+            <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
+            <button [disabled]="!categoriesForm.valid">Add</button>
 
         </div>
     </form>

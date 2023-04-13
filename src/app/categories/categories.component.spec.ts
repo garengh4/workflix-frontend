@@ -21,3 +21,4 @@ describe('CategoriesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
