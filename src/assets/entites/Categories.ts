@@ -1,5 +1,5 @@
 export class Categories{
-    categoryId: string;
+    categoryId: number;
     categoryName: string;
     profileId: string;
 }

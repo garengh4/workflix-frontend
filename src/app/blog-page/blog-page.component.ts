@@ -14,7 +14,11 @@ export class BlogPageComponent implements OnInit {
   successMsg: string;
   errMsg: string;
 
-  constructor(private fb: FormBuilder, private blogPageService: BlogPageService, private router: Router, public loader:LoaderService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private blogPageService: BlogPageService, 
+    private router: Router, 
+    public loader:LoaderService) { }
   
   ngOnInit(): void {
     this.blogPageForm();
@@ -26,7 +30,7 @@ export class BlogPageComponent implements OnInit {
     this.blogForm = this.fb.group({
       title: [this.BlogPageEntry.title, [Validators.required], null],
       content: [this.BlogPageEntry.content, [Validators.required], null],
-      categoryDTO: [{ categoryId: Number(localStorage.getItem("currentCategoriesId")) }],
+      // categoryDTO: [{ categoryId: Number(localStorage.getItem("currentCategoriesId")) }],
     })
   }
   
@@ -34,11 +38,21 @@ export class BlogPageComponent implements OnInit {
     this.errMsg = '';
     this.successMsg = '';
     this.BlogPageEntry = this.blogForm.value as Blog;
+
+
+    console.log("===============================================")
+    console.log(this.BlogPageEntry)
+    // TODO: HOW TO ADD PARAMETER: CATEGORYID TO this.BlogPageEntry
+    // this.BlogPageEntry = 
+    console.log("===============================================")
+
+
     this.blogPageService.saveBlog(this.BlogPageEntry).subscribe({
       next: msg => {
-        this.BlogPageEntry = msg;
+        // this.BlogPageEntry = msg;
 
       }, error: msg => {
+
         this.errMsg = <any>msg;
       }
     })

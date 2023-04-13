@@ -3,26 +3,24 @@
     <form [formGroup]="blogForm" (ngSubmit)="onSaveBlog()">
         <div class="add-profile-form">
             <h2>Create your blog here</h2>
-            
-            <mat-form-field class="input">
-                <mat-label>Blog Title</mat-label>
-                <input matInput formControlName="title" placeholder="Title" required>
-                <mat-error *ngIf="blogForm.get('title').errors?.['required']">
-                    Title is <strong>required</strong>
-                </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Favorite food</mat-label>
+                <input matInput formControlName="title" placeholder="Ex. Pizza" value="Sushi">
             </mat-form-field>
-            <mat-form-field class="text">
-                <mat-label>Content</mat-label>
-                <textarea rows="14" formControlName="content" placeholder="Once upon a time..." class="text-area"></textarea>
-                <mat-error *ngIf="blogForm.get('content').errors?.['required']">
-                    Blog content is <strong>required</strong>
-                </mat-error>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Leave a comment</mat-label>
+                <textarea matInput formControlName="content" placeholder="Ex. It makes me feel..."></textarea>
             </mat-form-field>
+
+
             <mat-spinner *ngIf="this.loader.getLoading()"></mat-spinner>
             <button class="mat-raised-btn" [disabled]="!blogForm.valid">Save</button>
 
         </div>
     </form>
     <button class="mat-raised-btn" routerLink="/blog" mat-raised-button>Back</button>
-
+    <p>{{successMsg}}</p>
+    <p>{{errMsg}}</p>
 </div>

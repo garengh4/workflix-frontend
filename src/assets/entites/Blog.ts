@@ -1,8 +1,6 @@
-export class Blog{
-    categoryId: string;
-    categoryName: string;
+export class Blog {
+    categoryId: number;
     title: string;
-    postId: string;
-    content: bigint;
-    categoryDTO:{categoryId:string};
+    postId: number;
+    content: string;
 }
