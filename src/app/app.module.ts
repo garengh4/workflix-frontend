@@ -22,6 +22,7 @@ import { LoadingInterceptor } from '../assets/interceptor/loading.interceptor';
 import { FilterByCategoryPipe } from './home/filter-by-category.pipe';
 import { ViewFilesComponent } from './view-files/view-files.component';
 import { SortFilesAlphabeticallyPipe } from './home/sort-files-alphabetically.pipe';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SortFilesAlphabeticallyPipe } from './home/sort-files-alphabetically.pi
     LoadingComponent,
     FilterByCategoryPipe,
     ViewFilesComponent,
-    SortFilesAlphabeticallyPipe
+    SortFilesAlphabeticallyPipe,
+    ChatComponent
   ],
   imports: [
     BrowserAnimationsModule,

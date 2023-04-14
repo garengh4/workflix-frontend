@@ -13,6 +13,7 @@ import { BlogComponent } from './blog/blog.component';
 import { BlogPageComponent } from './blog-page/blog-page.component';
 import { AddCategoriesComponent } from './add-categories/add-categories.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   // { path: 'heroes', component: HeroesComponent }
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'blog-page', component:  BlogPageComponent},
   { path: 'categories', component:  CategoriesComponent},
   { path: 'add-categories', component:  AddCategoriesComponent},
+  { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

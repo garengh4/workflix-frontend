@@ -1,0 +1,17 @@
+<div class="container p-3">
+    <div class="title-of-page">
+        <h3>Chat with ChatGPT</h3>
+    </div>
+    <mat-form-field [style.fontSize]="'16px'" appearance="fill" style="width: 100%;">
+        <mat-label>Enter your text here...</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="8"
+            cdkAutosizeMaxRows="8"></textarea>
+    </mat-form-field>
+    <mat-form-field [style.fontSize]="'16px'" appearance="fill" style="width: 100%;">
+        <mat-label>ChatGPT will respond here...</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="8"
+            cdkAutosizeMaxRows="8"></textarea>
+    </mat-form-field>
+    <button class="mat-raised-btn">Generate</button>
+    <button class="mat-raised-btn" routerLink="/home">Back to Home</button>
+</div>
