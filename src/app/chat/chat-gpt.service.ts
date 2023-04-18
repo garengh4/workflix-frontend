@@ -16,7 +16,7 @@ export class ChatGptService {
       apiKey: localStorage.getItem('openaiAPIKey')
     });
 
-    delete this.configuration.baseOptions.headers['User-Agent'];
+    delete this.configuration.baseOptions.headers['User-Agent']; //is this best practice? idk
 
     this.openai = new OpenAIApi(this.configuration);
 
