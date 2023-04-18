@@ -20,7 +20,10 @@
             <textarea disabled matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
                 cdkAutosizeMaxRows="5">{{data.response}}</textarea>
         </mat-form-field>
-        <button class="mat-raised-btn" (click)="generateText(data)">Generate</button>
+        <div class="flex-parent jc-center">
+            <button class="mat-raised-btn-text" (click)="generateText(data)">Generate</button>
+            <button class="mat-raised-btn-text" (click)="clearText()">Clear Text</button>
+        </div>
     </div>
     <button class="mat-raised-btn" routerLink="/home">Back to Home</button>
 </div>

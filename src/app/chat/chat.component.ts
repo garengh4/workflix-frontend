@@ -39,6 +39,10 @@ export class ChatComponent {
     }
   }
 
+  clearText() {
+    this.textList =[{sno:1,text:'',response:''}];
+  }
+
   generateText(data:textResponse) {
     this.openaiService.generateText(data.text).then(text => {
       data.response = text;
