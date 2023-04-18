@@ -1,0 +1,29 @@
+<div class="container p-3">
+    <div class="title-of-page">
+        <h3>Chat with ChatGPT</h3>
+    </div>
+    <div>
+        <mat-form-field>
+            <mat-label>Enter openai API Key</mat-label>
+            <input matInput placeholder="sk-xxxxxxxxxxxxxxxx" [(ngModel)]="openaiAPIKey">
+            <button class="mat-raised-btn" (click)="setOpenaiAPIKey(); openSnackBar()">Submit</button>
+        </mat-form-field>
+    </div>
+    <div *ngFor="let data of textList">
+        <mat-form-field [style.fontSize]="'16px'" appearance="fill" style="width: 100%;">
+            <mat-label>Enter your text here...</mat-label>
+            <textarea [(ngModel)]="data.text" matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+        <mat-form-field [style.fontSize]="'16px'" appearance="fill" style="width: 100%;">
+            <mat-label>ChatGPT will respond here...</mat-label>
+            <textarea disabled matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="5"
+                cdkAutosizeMaxRows="5">{{data.response}}</textarea>
+        </mat-form-field>
+        <div class="flex-parent jc-center">
+            <button class="mat-raised-btn-text" (click)="generateText(data)">Generate</button>
+            <button class="mat-raised-btn-text" (click)="clearText()">Clear Text</button>
+        </div>
+    </div>
+    <button class="mat-raised-btn" routerLink="/home">Back to Home</button>
+</div>
